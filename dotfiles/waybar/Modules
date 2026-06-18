@@ -1,0 +1,131 @@
+{
+"hyprland/workspaces": {
+	"format": "{icon}",
+	"show-special": true,
+	"sort-by": "id",
+	"all-outputs": true,
+	"format-icons": {
+		"1": "1",
+		"2": "2",
+		"3": "3",
+		"4": "4",
+		"5": "5",
+		"6": "6",
+		"7": "7",
+		"8": "8",
+		"9": "9",
+		"10": "10",
+		"terminalScratchpad": "",
+		"browser": "󰈹",
+		"terminal": "",
+		"emacs": "",
+	},
+},
+"clock": {
+    "format": "{:%H:%M   %d %B}",
+    "format-alt": "{:%H:%M   %A}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+	"calendar": {
+		"mode": "year",
+		"mode-mon-col": 3,
+		"weeks-pos": "right",
+		"on-scroll": 1,
+		"format": {
+			"months": "<span color='#ffead3'><b>{}</b></span>",
+			"days": "<span color='#ecc6d9'><b>{}</b></span>",
+			"weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+			"weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+			"today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+		}
+	}
+},
+
+"battery": {
+    "interval": 60,
+    "states": {
+        "warning": 50,
+        "critical": 25
+    },
+    "format": "{capacity}% {icon}",
+    "format-icons": {
+        "default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"]
+    },
+    "max-length": 25
+},
+
+"backlight": {
+    "device": "intel_backlight",
+    "format": "{icon}%{percent}",
+    "format-icons": ["󱩎","󱩏", "󱩐","󱩑", "󱩒","󱩓", "󱩔","󱩔", "󱩕","󰛨"]
+},
+
+"memory": {
+    "interval": 30,
+    "max-length": 15,
+    "format": " {used:0.1f}G/{total:0.1f}G"
+},
+
+"cpu": {
+     "interval": 3,
+     "format": " %{usage}",
+     "max-length": 10
+},
+
+"network": {
+	"format": "󰣺",
+	"format-wifi": "{icon}",
+	"format-ethernet": "󰣺",
+	"format-disconnected": "󰣼",
+    "format-linked": "󰈁 {ifname} (No IP)",
+	"tooltip-format": "{ipaddr}  {bandwidthUpBytes}  {bandwidthDownBytes}",
+	"tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
+	"tooltip-format-ethernet": "{ipaddr}  {bandwidthUpBytes}  {bandwidthDownBytes}",
+	"tooltip-format-disconnected": "󰌙 Disconnected",
+	"max-length": 30,
+	"format-icons": [
+		"󰤯", "󰤟", "󰤢", "󰤥", "󰤨"
+	],
+	"on-click": "nm-connection-editor"
+},
+
+"pulseaudio": {
+  "format": "{icon} {volume}%",
+  "format-bluetooth": "{icon} {volume}%",
+  "format-bluetooth-muted": " {icon}",
+  "format-muted": "󰸈 0%",
+  "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "default": ["", "", ""]
+    },
+  "tooltip": true,
+  "tooltip-format": "{icon} {desc} | {volume}%",
+  "on-click": "pavucontrol -t 3",
+  "on-click-middle": "$HOME/.config/scripts/menu/audio-switcher.sh",
+  "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+  "scroll-step": 5,
+},
+
+"idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+        "activated": "",
+        "deactivated": ""
+    },
+    "start-activated": false,
+},
+"disk": {
+    "interval": 30,
+    "format": "{percentage_free}% free on {path}",
+    "path": "/"
+},
+
+
+"tray": {
+	"icon-size": 20,
+	"spacing": 8,
+},
+
+}

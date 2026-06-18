@@ -1,0 +1,15 @@
+{
+"custom/power": {
+	"format": "⏻",
+	"tooltip": true,
+	"tooltip-format":"Logout Menu",
+    "on-click": "wlogout"
+},
+
+"custom/separator#line": {
+	"format": " | ",
+	"interval": "once",
+	"tooltip": false
+},
+
+}

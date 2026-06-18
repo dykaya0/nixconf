@@ -1,0 +1,104 @@
+@import "colors.css";
+
+* {
+  background-color: @background;
+  color: @primary;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: JetBrainsMono Nerd Font Propo;
+  font-size: 14px;
+}
+
+.modules-left {
+  margin-left: 8px;
+}
+
+.modules-right {
+  margin-right: 8px;
+}
+
+#clock,
+#memory,
+#cpu,
+#battery,
+#backlight,
+#custom-obs-audio,
+#custom-timer{
+  margin: 0 4px;
+}
+
+#workspaces {
+  margin: 0 6px;
+}
+
+#idle_inhibitor,
+#custom-packages{
+  margin: 0 6px;
+}
+
+#tray,
+#network,
+#custom-xkblayout,
+#pulseaudio,
+#custom-power {
+  margin: 0 6px;
+}
+
+#workspaces button {
+  all: initial;
+  padding: 0 6px;
+  margin: 0 2px;
+  min-width: 9px;
+  opacity: 0.5;
+}
+
+#workspaces button.empty {
+  opacity: 0.1;
+}
+
+#workspaces button.active {
+  opacity: 1;
+}
+
+#custom-xkblayout {
+  color: @primary;
+  font-size: 16px;
+}
+
+#custom-xkblayout.english {
+  color: @primary;
+}
+
+#custom-xkblayout.turkish {
+  color: @secondary_fixed;
+}
+
+#custom-obs-audio.muted {
+  color: @secondary_fixed;
+}
+
+#idle_inhibitor.activated {
+  color: @secondary_fixed;
+}
+
+#custom-packages.low {
+  color: @primary; 
+}
+
+#custom-packages.mid {
+  color: @secondary_fixed;
+}
+
+#custom-packages.high {
+  color: @error;
+}
+
+#custom-separator.line {
+  color: @tertiary;
+}
+
+
+.hidden {
+  opacity: 0;
+}

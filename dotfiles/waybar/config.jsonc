@@ -1,0 +1,43 @@
+{
+    "include": [
+        "$HOME/.config/waybar/Modules",
+        "$HOME/.config/waybar/ModulesCustom"
+    ],
+    "layer": "bottom",
+    "exclusive": true,
+    "passthrough": false,
+    "position": "top",
+    "spacing": 3,
+    "fixed-center": true,
+    "ipc": true,
+    "margin-left": 0,
+    "margin-bottom": 0,
+    "margin-top": 0,
+    "margin-right": 0,
+    "on-sigusr1": "toggle",
+    "on-sigusr2": "reload",
+
+    "modules-left": [
+        "clock",
+        "custom/separator#line",
+        "memory",
+        "cpu"
+    ],
+
+    "modules-center": [
+        "hyprland/workspaces",
+        "custom/separator#line",
+        "idle_inhibitor"
+    ],
+
+    "modules-right": [
+        "tray",
+        "custom/separator#line",  
+        "backlight",  
+        "battery",  
+        "network",
+        "pulseaudio",
+        "custom/power"
+    ]
+}
+
