@@ -1,6 +1,6 @@
 { config, pkgs, ...}:
 let 
-dotfiles = "${config.home.homeDirectory}/nixos/dotfiles";
+dotfiles = "${config.home.homeDirectory}/nixconf/dotfiles";
 create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
 configs = {
     hypr = "hypr";
