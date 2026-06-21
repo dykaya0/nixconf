@@ -1,36 +1,43 @@
 { pkgs, ... }:
 
 {
+    # User
     users.users.dogukan = {
         isNormalUser = true;
-        shell = pkgs.fish;
+        shell = pkgs.zsh;
         extraGroups = [
             "wheel"
             "networkmanager"
         ];
     };
+    # TLP for battery management
     services.tlp.enable = true;
+
+    # Bootloader and Display Manager
     boot.loader.grub.enable = true;
     boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
+
     security.pam.services.login.fprintAuth = false;
     services.displayManager.sddm = {
         enable = true;
         wayland.enable = true;
     };
+
+    # Laptop specific packages
     environment.systemPackages = with pkgs; [
-        firefox
-        btop
-        cliphist
-        dunst
-        fastfetch
-        ghostty
-        kitty
-        librewolf
-        nsxiv
-        pavucontrol
-        rsync
+        brightnessctl
     ];
 
+    # Sound and Bluetooth
+    services.pipewire = {
+        enable = true;
+        pulse.enable = true;
+    };
+    hardware.bluetooth.enable = true;
+    hardware.bluetooth.powerOnBoot = false;
+    hardware.blueman.enable = true;
+
+    # Window Manager and Wayland 
     programs.hyprland = {
         enable = true;
         withUWSM = true;
@@ -42,22 +49,5 @@
         extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
     };
 
-    services.pipewire = {
-        enable = true;
-        pulse.enable = true;
-    };
 
-    programs.fish = {
-        enable = true;
-        shellAliases = {
-            n="nvim";
-        };
-    };
-
-    fonts.packages = with pkgs; [
-        noto-fonts
-            nerd-fonts.jetbrains-mono
-            nerd-fonts.iosevka
-            nerd-fonts.caskaydia-mono
-    ];
 }

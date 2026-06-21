@@ -1,14 +1,17 @@
 { pkgs, ... }:
 
 {
+    # User
     users.users.dogukan = {
         isNormalUser = true;
-        shell = pkgs.fish;
+        shell = pkgs.zsh;
         extraGroups = [
             "wheel"
             "networkmanager"
         ];
     };
+
+    # Bootloader and Display Manager
     boot.loader.grub.enable = true;
     boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
     security.pam.services.login.fprintAuth = false;
@@ -16,20 +19,18 @@
         enable = true;
         wayland.enable = true;
     };
+
+    # Sound
+    services.pipewire = {
+        enable = true;
+        pulse.enable = true;
+    };
+    # Desktop specific packages
     environment.systemPackages = with pkgs; [
-        firefox
-        btop
-        cliphist
-        dunst
-        fastfetch
-        ghostty
-        kitty
-        librewolf
-        nsxiv
-        pavucontrol
-        rsync
+        steam
     ];
 
+    # Window Manager and Wayland 
     programs.hyprland = {
         enable = true;
         withUWSM = true;
@@ -41,22 +42,4 @@
         extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
     };
 
-    services.pipewire = {
-        enable = true;
-        pulse.enable = true;
-    };
-
-    programs.fish = {
-        enable = true;
-        shellAliases = {
-            n="nvim";
-        };
-    };
-
-    fonts.packages = with pkgs; [
-        noto-fonts
-            nerd-fonts.jetbrains-mono
-            nerd-fonts.iosevka
-            nerd-fonts.caskaydia-mono
-    ];
 }

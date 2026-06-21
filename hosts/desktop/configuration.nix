@@ -8,5 +8,5 @@
         ../../modules/desktop.nix
     ];
 
-    networking.hostName = "desktop";
+    networking.hostName = "nixos";
 }
