@@ -6,8 +6,10 @@
 			url = "github:nix-community/home-manager/release-26.05";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
-        nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
-        nix-doom-emacs-unstraightened.inputs.nixpkgs.follows = "";
+		nix-doom-emacs-unstraightened = {
+			url = "github:marienz/nix-doom-emacs-unstraightened";
+			inputs.nixpkgs.follows = "";
+		};
 	};
 
 	outputs = inputs @ { self, nixpkgs, home-manager, ... }: 
@@ -31,10 +33,10 @@
                                 useUserPackages = true;
                                 users.dogukan = import ./home/dogukan.nix;
                                 backupFileExtension = "backup";
+                                sharedModules = [
+                                    inputs.nix-doom-emacs-unstraightened.homeModule
+                                ];
                             };
-                            sharedModules = [
-                                inputs.nix-doom-emacs-unstraightened.homeModule
-                            ];
                         }
 
                     ];

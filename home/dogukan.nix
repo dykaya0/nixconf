@@ -20,7 +20,7 @@ in
     programs.neovim.defaultEditor = true;
     programs.doom-emacs = {
         enable = true;
-        doomDir = "${dotfiles}/emacs";
+        doomDir = ../dotfiles/emacs;
     };
 
     xdg.configFile = builtins.mapAttrs

@@ -23,7 +23,7 @@
         loginShellInit = ''
         eval "$(starship init zsh)"
         '';
-        programs.zsh.promptInit = ''
+        promptInit = ''
         '';
 
         syntaxHighlighting.highlighters = [
