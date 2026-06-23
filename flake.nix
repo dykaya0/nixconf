@@ -28,6 +28,9 @@
 
                         home-manager.nixosModules.home-manager
                         {
+                            nixpkgs.overlays = [
+                                inputs.nix-doom-emacs-unstraightened.overlays.default
+                            ];
                             home-manager = {
                                 useGlobalPkgs = true;
                                 useUserPackages = true;

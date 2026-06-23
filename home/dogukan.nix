@@ -19,12 +19,6 @@ in
 
     programs.firefox.enable = true;
     programs.neovim.defaultEditor = true;
-    programs.doom-emacs = {
-        enable = true;
-        doomDir = ../dotfiles/doom.d;
-        doomLocalDir = "${config.home.homeDirectory}/.local/share/nix-doom";
-        experimentalFetchTree = true;
-    };
 
     xdg.configFile = builtins.mapAttrs
         (name: subpath: {
@@ -34,13 +28,18 @@ in
     configs;
 
     home.packages = with pkgs; [
-            gcc
-            gnumake
-            neovim
-            ripgrep
-            rofi
-            tmux
-            waybar
+        gcc
+        gnumake
+        neovim
+        ripgrep
+        rofi
+        tmux
+        waybar
+        (pkgs.doomEmacs {
+         doomDir = ../dotfiles/doom.d;
+         doomLocalDir = "${config.home.homeDirectory}/.local/share/nix-doom";
+         experimentalFetchTree = true;
+         })
     ];
 
     # GTK setup
