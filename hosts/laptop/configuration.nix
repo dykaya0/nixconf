@@ -6,6 +6,7 @@
 
         ../../modules/common.nix
         ../../modules/laptop.nix
+        ../../modules/firefox.nix
     ];
 
     networking.hostName = "nixos-laptop";

@@ -35,7 +35,6 @@
     };
     hardware.bluetooth.enable = true;
     hardware.bluetooth.powerOnBoot = false;
-    hardware.blueman.enable = true;
 
     # Window Manager and Wayland 
     programs.hyprland = {

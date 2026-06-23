@@ -13,7 +13,8 @@
 
     # Bootloader and Display Manager
     boot.loader.grub.enable = true;
-    boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
+    boot.loader.grub.device = "/dev/sda";
+    boot.loader.grub.useOSProber = true;
     security.pam.services.login.fprintAuth = false;
     services.displayManager.sddm = {
         enable = true;
@@ -36,10 +37,10 @@
         withUWSM = true;
         xwayland.enable = true;
     };
-
     xdg.portal = {
         enable = true;
         extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
     };
+    programs.dconf.enable = true; # for consistent GTK theming
 
 }
