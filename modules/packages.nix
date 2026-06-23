@@ -5,7 +5,10 @@ in
 {
     programs.git.enable = true;
     programs.bash.enable = true;
-    services.emacs.enable = true;
+    services.emacs = {
+        enable = true;
+        package = pkgs.emacs-pgtk;
+    };
     services.mullvad-vpn.enable = true;
 
     environment.systemPackages = with pkgs; [

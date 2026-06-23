@@ -19,4 +19,11 @@
         dates = "weekly";
         options = "--delete-older-than 30d";
     };
+
+    fonts.fontconfig = {
+
+        enable = true;
+        hinting.enable = true;
+        antialias = true;
+    };
 }
