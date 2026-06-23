@@ -18,6 +18,10 @@ in
 
     programs.firefox.enable = true;
     programs.neovim.defaultEditor = true;
+    programs.doom-emacs = {
+        enable = true;
+        doomDir = "${dotfiles}/emacs";
+    };
 
     xdg.configFile = builtins.mapAttrs
         (name: subpath: {
@@ -27,7 +31,7 @@ in
     configs;
 
     home.packages = with pkgs; [
-        gcc
+            gcc
             gnumake
             neovim
             ripgrep
