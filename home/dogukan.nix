@@ -21,8 +21,9 @@ in
     programs.neovim.defaultEditor = true;
     programs.doom-emacs = {
         enable = true;
-        doomDir = ../dotfiles/emacs;
-        doomLocalDir = "~/.local/share/nix-doom";
+        doomDir = ../dotfiles/doom.d;
+        doomLocalDir = "${config.home.homeDirectory}/.local/share/nix-doom";
+        experimentalFetchTree = true;
     };
 
     xdg.configFile = builtins.mapAttrs
