@@ -23,7 +23,6 @@
 
                     modules = [
                         ./hosts/${hostname}/configuration.nix
-                        inputs.nix-doom-emacs-unstraightened.homeModule
 
                         home-manager.nixosModules.home-manager
                         {
@@ -33,7 +32,11 @@
                                 users.dogukan = import ./home/dogukan.nix;
                                 backupFileExtension = "backup";
                             };
+                            sharedModules = [
+                                inputs.nix-doom-emacs-unstraightened.homeModule
+                            ];
                         }
+
                     ];
                 };
         in
