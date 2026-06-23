@@ -4,11 +4,12 @@ repo_name = "nixconf";
 dotfiles = "${config.home.homeDirectory}/${repo_name}/dotfiles";
 create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
 configs = {
+    ghostty = "ghostty";
     hypr = "hypr";
-    waybar = "waybar";
     nvim = "nvim";
     rofi = "rofi";
     tmux = "tmux";
+    waybar = "waybar";
 };
 in
 {
@@ -21,6 +22,7 @@ in
     programs.doom-emacs = {
         enable = true;
         doomDir = ../dotfiles/emacs;
+        doomLocalDir = "~/.local/share/nix-doom";
     };
 
     xdg.configFile = builtins.mapAttrs
