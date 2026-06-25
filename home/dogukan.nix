@@ -35,10 +35,11 @@ in
         rofi
         tmux
         waybar
-        (pkgs.doomEmacs {
+        (pkgs.emacsWithDoom {
          doomDir = ../dotfiles/doom.d;
          doomLocalDir = "${config.home.homeDirectory}/.local/share/nix-doom";
          experimentalFetchTree = true;
+         emacs = emacs-pgtk;
          })
     ];
 

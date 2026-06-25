@@ -36,9 +36,6 @@
                                 useUserPackages = true;
                                 users.dogukan = import ./home/dogukan.nix;
                                 backupFileExtension = "backup";
-                                sharedModules = [
-                                    inputs.nix-doom-emacs-unstraightened.homeModule
-                                ];
                             };
                         }
 
