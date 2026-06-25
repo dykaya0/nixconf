@@ -1,36 +1,42 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
     imports = [
         ./hardware-configuration.nix
 
-        ../../modules/system.nix
-        ../../modules/hyprland.nix
-        ../../modules/nvidia.nix
-        ../../modules/sound.nix
-        ../../modules/shell.nix
-        ../../modules/packages.nix
-        ../../modules/firefox.nix
+            ../../modules/system.nix
+            ../../modules/hyprland.nix
+            ../../modules/nvidia.nix
+            ../../modules/sound.nix
+            ../../modules/shell.nix
+            ../../modules/packages.nix
+            ../../modules/firefox.nix
     ];
 
     networking.hostName = "nixos";
 
-    # Bootloader
+    services.displayManager.sddm.settings = {
+        Autologin = {
+            Session = "hyprland.desktop";
+            User = config.users.users.dogukan.name;
+        };
+    };
+# Bootloader
     boot.loader.grub.enable = true;
     boot.loader.grub.device = "/dev/sda";
     boot.loader.grub.useOSProber = true;
 
-    # User
+# User
     users.users.dogukan = {
         isNormalUser = true;
         shell = pkgs.zsh;
         extraGroups = [
             "wheel"
-            "networkmanager"
+                "networkmanager"
         ];
     };
 
-    # Desktop specific packages
+# Desktop specific packages
     environment.systemPackages = with pkgs; [
         steam
     ];

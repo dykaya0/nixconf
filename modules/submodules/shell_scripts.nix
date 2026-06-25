@@ -98,6 +98,41 @@
         takeScreenshot
             fi
             '';
+
+    switch_audio = pkgs.writeShellScriptBin "switch_audio" ''
+        export PATH="${pkgs.pulseaudio}/bin:${pkgs.gawk}/bin:${pkgs.gnused}/bin:${pkgs.gnugrep}/bin:${pkgs.coreutils}/bin:${pkgs.rofi}/bin:${pkgs.libnotify}/bin"
+
+        get_sinks() {
+            pactl list short sinks | awk '{print $2}' | sed 's/^alsa_output\.//'
+        }
+
+    switchAudio() {
+        local sinks
+            sinks=$(get_sinks)
+            local count
+            count=$(echo "$sinks" | wc -l)
+
+            choice=$(echo "$sinks" | rofi -dmenu -i -l "$count" -p "Choose output:")
+
+            [[ -z "$choice" ]] && exit 0
+
+            local full_sink
+                full_sink=$(pactl list short sinks | awk '{print $2}' | grep -F "$choice")
+
+                if [[ -n "$full_sink" ]]; then
+                    pactl set-default-sink "$full_sink"
+                        notify-send "Audio switched to $choice"
+                else
+                    notify-send "Sink not found"
+                        fi
+    }
+
+    if [[ $# -gt 0 ]]; then
+        "$1"
+    else
+        switchAudio
+            fi
+            '';
     waybar_refresh = pkgs.writeShellScriptBin "waybar_refresh" ''
         set -euo pipefail
         export PATH=${pkgs.procps}/bin:$PATH

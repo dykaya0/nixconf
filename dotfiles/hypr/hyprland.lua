@@ -1,10 +1,10 @@
 mainMod = "SUPER"
 
-browser = "librewolf --new-window"
+browser = "firefox --new-window"
 terminal = "ghostty --working-directory=HOME"
 appLauncher = "rofi -show drun"
 fileManager = "thunar"
-emacs = "emacsclient -c"
+emacs = "emacsclient -c -a ''"
 
 require("modules.autostart")
 require("modules.general")

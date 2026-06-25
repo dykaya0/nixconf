@@ -30,6 +30,7 @@ in
         shell_scripts.clipboard_history
         shell_scripts.screenshot_menu
         shell_scripts.tms
+        shell_scripts.switch_audio
         shell_scripts.waybar_refresh
         tealdeer
         ungoogled-chromium
