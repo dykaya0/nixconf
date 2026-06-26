@@ -35,12 +35,6 @@ in
         rofi
         tmux
         waybar
-        (pkgs.emacsWithDoom {
-         doomDir = ../dotfiles/doom.d;
-         doomLocalDir = "${config.home.homeDirectory}/.local/share/nix-doom";
-         experimentalFetchTree = true;
-         emacs = emacs-pgtk;
-         })
     ];
 
     # GTK setup

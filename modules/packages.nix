@@ -36,6 +36,18 @@ in
         wl-clipboard
         wlogout
         zip
+        (emacsWithPackagesFromUsePackage {
+            package = pkgs.emacs;
+            config = ../dotfiles/emacs/config.el;
+            alwaysEnsure = true;
+            defaultInitFile = true;
+            alwaysTangle = false;
+
+            # Optionally provide extra packages not in the configuration file.
+            extraEmacsPackages = epkgs: [
+              epkgs.use-package
+            ];
+          })
     ];
     fonts.packages = with pkgs; [
         noto-fonts

@@ -6,10 +6,10 @@
 			url = "github:nix-community/home-manager/release-26.05";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
-		nix-doom-emacs-unstraightened = {
-			url = "github:marienz/nix-doom-emacs-unstraightened";
-			inputs.nixpkgs.follows = "";
-		};
+        emacs-overlay = {
+            url = "github:nix-community/emacs-overlay";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
 	};
 
 	outputs = inputs @ { self, nixpkgs, home-manager, ... }: 
@@ -26,18 +26,20 @@
                     modules = [
                         ./hosts/${hostname}/configuration.nix
 
-                        home-manager.nixosModules.home-manager
                         {
                             nixpkgs.overlays = [
-                                inputs.nix-doom-emacs-unstraightened.overlays.default
+                                inputs.emacs-overlay.overlays.default
                             ];
-                            home-manager = {
-                                useGlobalPkgs = true;
-                                useUserPackages = true;
-                                users.dogukan = import ./home/dogukan.nix;
-                                backupFileExtension = "backup";
-                            };
                         }
+                    home-manager.nixosModules.home-manager
+                    {
+                        home-manager = {
+                            useGlobalPkgs = true;
+                            useUserPackages = true;
+                            users.dogukan = import ./home/dogukan.nix;
+                            backupFileExtension = "backup";
+                        };
+                    }
 
                     ];
                 };
