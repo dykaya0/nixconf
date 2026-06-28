@@ -10,7 +10,6 @@
             ../../modules/sound.nix
             ../../modules/shell.nix
             ../../modules/packages.nix
-            ../../modules/firefox.nix
     ];
 
     networking.hostName = "nixos";
@@ -22,9 +21,15 @@
         };
     };
 # Bootloader
-    boot.loader.grub.enable = true;
-    boot.loader.grub.device = "/dev/sda";
-    boot.loader.grub.useOSProber = true;
+    boot.loader = {
+        efi.canTouchEfiVariables = true;
+        grub = {
+            enable = true;
+            efiSupport = true;
+            device = "nodev";
+            useOSProber = true;
+        };
+    };
 
 # User
     users.users.dogukan = {
@@ -40,4 +45,8 @@
     environment.systemPackages = with pkgs; [
         steam
     ];
+    services.hardware.openrgb = {
+        enable = true;
+        startupProfile = "Default.orp";
+    };
 }

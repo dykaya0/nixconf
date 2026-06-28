@@ -6,6 +6,10 @@
 			url = "github:nix-community/home-manager/release-26.05";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+        firefox-addons = {
+            url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
         emacs-overlay = {
             url = "github:nix-community/emacs-overlay";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -20,7 +24,7 @@
                     inherit system;
 
                     specialArgs = {
-                        inherit self;
+                        inherit self inputs;
                     };
 
                     modules = [
@@ -38,6 +42,9 @@
                             useUserPackages = true;
                             users.dogukan = import ./home/dogukan.nix;
                             backupFileExtension = "backup";
+                            extraSpecialArgs = {
+                                inherit self inputs system;
+                            };
                         };
                     }
 

@@ -13,6 +13,9 @@ configs = {
 };
 in
 {
+    imports = [
+        ../modules/home-manager/firefox.nix
+    ];
     home.username = "dogukan";
     home.homeDirectory = "/home/dogukan";
     home.stateVersion = "26.05";

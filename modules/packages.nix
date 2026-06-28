@@ -5,6 +5,7 @@ in
 {
     programs.git.enable = true;
     programs.bash.enable = true;
+    programs.ssh.startAgent = true;
     services.mullvad-vpn.enable = true;
 
     environment.systemPackages = with pkgs; [
@@ -14,6 +15,7 @@ in
         curl
         dunst
         fastfetch
+        fzf
         ghostty
         hyprshot
         kdePackages.okular
@@ -25,8 +27,8 @@ in
         rsync
         shell_scripts.clipboard_history
         shell_scripts.screenshot_menu
-        shell_scripts.tms
         shell_scripts.switch_audio
+        shell_scripts.tms
         shell_scripts.waybar_refresh
         tealdeer
         ungoogled-chromium

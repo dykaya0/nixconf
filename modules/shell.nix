@@ -19,17 +19,26 @@
         enable = true;
         shellAliases = {
             n="nvim";
+            ls="ls -1";
+            lsa="ls -a1";
+            lsla="ls -la1";
         };
-        loginShellInit = ''
+        interactiveShellInit = ''
         eval "$(starship init zsh)"
+        source <(fzf --zsh)
+        export FZF_DEFAULT_OPTS="--style minimal --color 16 --layout=reverse --height 30% --preview='bat -p --color=always {}'"
+        export FZF_CTRL_R_OPTS="--style minimal --color 16 --info inline --no-sort --no-preview"
         '';
         promptInit = ''
         '';
 
-        syntaxHighlighting.highlighters = [
-            "main"
-            "brackets"
-        ];
+        syntaxHighlighting = {
+            enable = true;
+            highlighters = [
+                "main"
+                "brackets"
+            ];
+        };
         enableCompletion = true;
 
         setOptions = [

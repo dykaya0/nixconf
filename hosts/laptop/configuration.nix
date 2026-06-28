@@ -10,7 +10,6 @@
         ../../modules/hyprland.nix
         ../../modules/shell.nix
         ../../modules/packages.nix
-        ../../modules/firefox.nix
     ];
 
     networking.hostName = "nixos-laptop";
