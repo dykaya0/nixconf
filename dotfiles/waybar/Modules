@@ -103,8 +103,8 @@
   "tooltip": true,
   "tooltip-format": "{icon} {desc} | {volume}%",
   "on-click": "pavucontrol -t 3",
-  "on-click-middle": "$HOME/.config/scripts/menu/audio-switcher.sh",
-  "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+  "on-click-middle": "switch_audio",
+  "on-click-right": "wpctl set-mute @DEFAULT_SINK@ toggle",
   "scroll-step": 5,
 },
 

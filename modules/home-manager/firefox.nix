@@ -63,6 +63,7 @@
                 "general.autoScroll" = true;
                 "layout.css.prefers-color-scheme.content-override" = 0;
                 "full-screen-api.warning.timeout" = 0;
+                "media.videocontrols.picture-in-picture.video-toggle.enabled" = false;
             };
 
             extensions.packages = with inputs.firefox-addons.packages.${system}; [

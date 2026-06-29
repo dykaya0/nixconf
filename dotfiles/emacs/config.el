@@ -42,6 +42,14 @@
   :config
   (load-theme 'doom-one t))
 
+(use-package org-superstar
+  :hook (org-mode . org-superstar-mode)
+  :custom
+  (org-superstar-headline-bullets-list '("◉" "○" "✸" "✿" "◆" "▶"))
+  (org-superstar-remove-leading-stars t)
+  (org-superstar-leading-bullet ?\s)
+  (org-hide-leading-stars t))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Faces(Emacs default font) and icons
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -244,6 +252,16 @@
 (use-package org
              :ensure nil                      ; built-in, Nix supplies it via emacs itself
              :mode ("\\.org\\'" . org-mode)
+             :custom
+             (org-hide-emphasis-markers t)
+             (org-startup-indented t)
+             (org-ellipsis " ▾")
+
+             :custom-face
+             (org-level-1 ((t (:height 1.3 :weight bold))))
+             (org-level-2 ((t (:height 1.2 :weight bold))))
+             (org-level-3 ((t (:height 1.1 :weight bold))))
+             (org-level-4 ((t (:weight semi-bold))))
              :config
 
              (setq org-directory "~/org")

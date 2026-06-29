@@ -6,6 +6,7 @@ in
     programs.git.enable = true;
     programs.bash.enable = true;
     programs.ssh.startAgent = true;
+    programs.thunar.enable = true;
     services.mullvad-vpn.enable = true;
 
     environment.systemPackages = with pkgs; [
