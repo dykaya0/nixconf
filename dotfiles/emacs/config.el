@@ -55,23 +55,23 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (set-face-attribute 'default nil
      :family "JetBrainsMono Nerd Font"
-     :height 100
+     :height 90
      :weight 'normal
      :width 'normal)
 
 (set-face-attribute 'variable-pitch nil
      :family "JetBrainsMono Nerd Font"
-     :height 100
+     :height 90
      :weight 'normal
      :width 'normal)
 
 (set-face-attribute 'fixed-pitch nil
      :family "JetBrainsMono Nerd Font"
-     :height 100
+     :height 90
      :weight 'normal
      :width 'normal)
 
-(add-to-list 'default-frame-alist '(font . "JetBrainsMono Nerd Font-12"))
+(add-to-list 'default-frame-alist '(font . "JetBrainsMono Nerd Font-10"))
 
 (set-face-attribute 'font-lock-comment-face nil :slant 'italic)
 (set-face-attribute 'font-lock-function-name-face nil :slant 'italic)

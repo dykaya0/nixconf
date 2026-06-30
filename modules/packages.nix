@@ -26,6 +26,7 @@ in
         obs-studio
         pavucontrol
         rsync
+        rustup
         shell_scripts.clipboard_history
         shell_scripts.screenshot_menu
         shell_scripts.switch_audio
