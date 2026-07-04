@@ -23,6 +23,9 @@
             lsa="ls -a1";
             lsla="ls -la1";
         };
+        shellInit = ''
+            eval "$(starship init zsh)"
+        '';
         interactiveShellInit = ''
         eval "$(starship init zsh)"
         source <(fzf --zsh)

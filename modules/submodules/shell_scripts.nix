@@ -139,4 +139,20 @@
 
         pkill -SIGUSR2 waybar
         '';
+
+    xkblayout = pkgs.writeShellScriptBin "xkblayout" ''
+      export PATH="${pkgs.hyprland}/bin:${pkgs.jq}/bin:${pkgs.rofi}/bin:$PATH"
+
+      set -euo pipefail
+
+      device=$(hyprctl devices -j | jq -r '.keyboards[].name' | rofi -dmenu -p "Device")
+
+      [ -z "$device" ] && exit 0
+
+      direction=$(printf "next\nprev" | rofi -dmenu -p "Direction")
+
+      [ -z "$direction" ] && exit 0
+
+      hyprctl switchxkblayout "$device" "$direction"
+    '';
 }
