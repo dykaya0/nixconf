@@ -29,6 +29,7 @@ in
             brave
             cliphist
             curl
+            devenv
             dunst
             fastfetch
             fzf

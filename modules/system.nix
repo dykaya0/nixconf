@@ -5,6 +5,10 @@
         "nix-command"
         "flakes"
     ];
+    nix.settings.trusted-users = [
+      "root"
+      "@wheel"
+    ];
 
     # Time and Networking
     time.timeZone = "Europe/Istanbul";
