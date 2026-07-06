@@ -3,6 +3,7 @@
 {
   languages.javascript = {
     enable = true;
+    lsp.enable = true;
     pnpm.enable = true;
   };
 
