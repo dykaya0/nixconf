@@ -19,15 +19,17 @@
         enable = true;
         shellAliases = {
             n="nvim";
-            ls="ls -1";
-            lsa="ls -a1";
-            lsla="ls -la1";
+            cd="z";
+            ls="eza -1";
+            lsa="eza -a1";
+            lsla="eza -la1";
         };
         shellInit = ''
             eval "$(starship init zsh)"
         '';
         interactiveShellInit = ''
         eval "$(starship init zsh)"
+        eval "$(devenv hook zsh)"
         source <(fzf --zsh)
         export FZF_DEFAULT_OPTS="--style minimal --color 16 --layout=reverse --height 30% --preview='bat -p --color=always {}'"
         export FZF_CTRL_R_OPTS="--style minimal --color 16 --info inline --no-sort --no-preview"
@@ -49,6 +51,10 @@
             "MENU_COMPLETE"
             "AUTO_PARAM_SLASH"
         ];
+    };
+    programs.zoxide = {
+        enable = true;
+        enableZshIntegration = true;
     };
     programs.starship = {
         enable = true;
