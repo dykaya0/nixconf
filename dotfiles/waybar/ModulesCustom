@@ -6,6 +6,14 @@
     "on-click": "wlogout"
 },
 
+"custom/tomato-c": {
+	"format": "{text}",
+	"tooltip": false,
+    "interval": 1,
+    "exec": "tomato -t",
+    "exec-if": "command -v tomato"
+},
+
 "custom/separator#line": {
 	"format": " | ",
 	"interval": "once",

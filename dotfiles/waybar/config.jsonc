@@ -21,7 +21,9 @@
         "clock",
         "custom/separator#line",
         "memory",
-        "cpu"
+        "cpu",
+        "custom/separator#line",
+        "custom/tomato-c"
     ],
 
     "modules-center": [
