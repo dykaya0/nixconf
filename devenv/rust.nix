@@ -9,11 +9,4 @@
     };
 
     processes.dev.exec = "cargo run";
-    git-hooks.hooks = {
-        rustfmt
-            .enable = true;
-        clippy
-            .enable = true;
-
-    };
 }
