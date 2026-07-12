@@ -31,10 +31,9 @@ return {
             dashboard.button("m", "󰈙  Man pages", ":Telescope man_pages<CR>"),
             dashboard.button("r", "󱝏  MRU files", ":Telescope oldfiles<CR>"),
             dashboard.button("o", "  Browse pwd", ":edit .<CR>"),
-            dashboard.button("c", "  Browse $XDG_CONFIG_HOME", ":edit $XDG_CONFIG_HOME <CR>"),
-            dashboard.button("d", "  Browse dotfiles", ":edit $HOME/dotfiles <CR>"),
-            dashboard.button("s", "󰯂  Browse scripts", ":edit $XDG_CONFIG_HOME/scripts <CR>"),
-            dashboard.button("n", "  Browse neovim config", ":edit $XDG_CONFIG_HOME/nvim <CR>"),
+            dashboard.button("c", "  Browse nixconf", ":edit $HOME/nixconf <CR>"),
+            dashboard.button("d", "  Browse dotfiles", ":edit $HOME/nixconf/dotfiles <CR>"),
+            dashboard.button("n", "  Browse neovim config", ":edit $HOME/nixconf/dotfiles/nvim <CR>"),
             dashboard.button("l", "  Plugins", ":Lazy<CR>"),
             dashboard.button("q", "󰅙  Quit", ":q!<CR>"),
         }

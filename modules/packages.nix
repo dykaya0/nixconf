@@ -35,9 +35,10 @@ in
             fastfetch
             fzf
             ghostty
+            gimp
             hyprshot
             kdePackages.okular
-            kitty
+            kdePackages.kclock
             mpv
             nsxiv
             obs-studio

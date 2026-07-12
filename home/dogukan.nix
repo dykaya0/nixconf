@@ -10,6 +10,7 @@ configs = {
     rofi = "rofi";
     tmux = "tmux";
     waybar = "waybar";
+    kitty = "kitty";
 };
 in
 {
@@ -31,6 +32,7 @@ in
     configs;
 
     home.packages = with pkgs; [
+        kitty
         gcc
         gnumake
         neovim

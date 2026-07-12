@@ -1,16 +1,7 @@
 diff --git a/config.h b/config.h
-index 07a3233..760c37a 100644
+index 07a3233..88fba40 100644
 --- a/config.h
 +++ b/config.h
-@@ -25,7 +25,7 @@ static const char* ICONS = "nerdicons";
- 
- /* 1 means you'll be asked to continue
-  * after each work cycle, 0 means not */
--static const int AUTOSTARTWORK = 1;
-+static const int AUTOSTARTWORK = 0;
- 
- /* 1 means you'll be asked to continue
-  * after each pause, 0 means not */
 @@ -59,18 +59,18 @@ static const int THUNDERVOLUME = 50;
  static const int BGTRANSPARENCY = 1;
  

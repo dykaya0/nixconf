@@ -28,7 +28,6 @@ local float_classes = table.concat({
     "org\\.gnome\\.Calculator",
     "org\\.kde\\.kclock",
     "blueman-manager",
-    "kitty",
 }, "|")
 hl.window_rule({
     name = "FloatingApps",
@@ -42,7 +41,7 @@ hl.window_rule({
 
 local bigger_float_classes = table.concat({
     "anki",
-    "thunar",
+    "Thunar",
     "Nsxiv",
     "nm-connection-editor",
     "hyprland-share-picker",

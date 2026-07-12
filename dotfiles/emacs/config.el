@@ -141,6 +141,13 @@
         evil-undo-system 'undo-redo)
   :config
   (evil-mode 1)
+
+  ;; Common typos
+  (evil-ex-define-cmd "W" "w")
+  (evil-ex-define-cmd "Q" "q")
+  (evil-ex-define-cmd "WQ" "wq")
+  (evil-ex-define-cmd "Wq" "wq")
+  (setq org-startup-folded 'content)   ; Collapse to top-level headings only 
   (evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle)
   (evil-define-key 'normal org-mode-map (kbd "RET") #'my/org-dwim-at-point))
 
