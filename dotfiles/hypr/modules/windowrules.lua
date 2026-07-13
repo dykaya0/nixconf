@@ -1,13 +1,4 @@
 hl.window_rule({
-    name = "OnFullscreen",
-    match = {
-        fullscreen = true
-    },
-    border_size = 5,
-    rounding = 1
-})
-
-hl.window_rule({
     name = "TransparentSpecialWorkspace",
     match = {
         workspace = "special:terminalScratchpad"
@@ -15,13 +6,17 @@ hl.window_rule({
     opacity = "0.6 override 0.5 override 0.4 override"
 })
 
+local whole_column_classes = table.concat({
+    "firefox",
+}, "|")
 hl.window_rule({
-    name = "Named workspaces has max one tiled window",
-    match = { workspace = "n[true]w[t1]" },
-    float = true,
-    center = true,
-    size = { "monitor_w * 0.6", "monitor_h * 0.8" }
+    name = "WholeColumnApps",
+    match = {
+        class = whole_column_classes
+    },
+    scrolling_width = 1
 })
+
 
 local float_classes = table.concat({
     "org\\.pulseaudio\\.pavucontrol",
@@ -41,6 +36,7 @@ hl.window_rule({
 
 local bigger_float_classes = table.concat({
     "anki",
+    "thunar",
     "Thunar",
     "Nsxiv",
     "nm-connection-editor",

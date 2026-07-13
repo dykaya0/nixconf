@@ -8,7 +8,7 @@ end)
 -- Look and feel
 hl.config({
     general = {
-        layout = "master",
+        layout = "scrolling",
         border_size = 2,
         gaps_in = 2,
         gaps_out = 3,
@@ -17,6 +17,12 @@ hl.config({
             active_border   = "rgba(723ec3ff)",
             inactive_border = "rgba(595959aa)",
         }
+    },
+
+    scrolling = {
+        fullscreen_on_one_column = true,
+        focus_fit_method = 1,
+        wrap_swapcol = false,
     },
 
     decoration = {
@@ -99,11 +105,6 @@ hl.animation({ leaf = "layers", enabled = true, speed = 4, bezier = "quick" })
 hl.animation({ leaf = "workspaces", enabled = false, speed = 2, bezier = "quick", style = "fade" })
 hl.animation({ leaf = "zoomFactor", enabled = true, speed = 10, bezier = "quick" })
 
-hl.config({
-    master = {
-        new_on_top = true
-    },
-})
 
 hl.config({
     misc = {
