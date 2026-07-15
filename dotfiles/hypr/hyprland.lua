@@ -8,6 +8,7 @@ emacs = "emacsclient -c -a ''"
 
 require("modules.autostart")
 require("modules.general")
+require("modules.events")
 require("modules.monitors")
 require("modules.windowrules")
 require("modules.keybinds")

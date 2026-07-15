@@ -6,5 +6,7 @@
   },
   "diagnostics": {
     "globals": ["hl"]
-  }
+  },
+  "hover.previewFieldsMax": 1000,
+  "hover.enumParamsMax": 1000
 }

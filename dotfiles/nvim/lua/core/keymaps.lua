@@ -39,18 +39,18 @@ vim.keymap.set("n", "D", function()
 end, { desc = 'Toggle floating diagnostics on cursor' })
 
 vim.keymap.set("n", "<leader>yd", function()
-  local diagnostics = vim.diagnostic.get(0, {
-    lnum = vim.api.nvim_win_get_cursor(0)[1] - 1,
-  })
+    local diagnostics = vim.diagnostic.get(0, {
+        lnum = vim.api.nvim_win_get_cursor(0)[1] - 1,
+    })
 
-  if #diagnostics == 0 then
-    print("No diagnostic under cursor")
-    return
-  end
+    if #diagnostics == 0 then
+        print("No diagnostic under cursor")
+        return
+    end
 
-  local msg = diagnostics[1].message
-  vim.fn.setreg("+", msg) -- system clipboard
-  print("Copied diagnostic:\n" .. msg)
+    local msg = diagnostics[1].message
+    vim.fn.setreg("+", msg) -- system clipboard
+    print("Copied diagnostic:\n" .. msg)
 end, { desc = "Copy diagnostic message" })
 
 -- Select all file

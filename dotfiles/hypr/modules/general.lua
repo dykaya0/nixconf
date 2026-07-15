@@ -1,20 +1,14 @@
-hl.on("config.reloaded", function(m)
-    hl.notification.create({
-        text = "Config reloaded",
-        timeout = 3000,
-        icon = "info"
-    })
-end)
 -- Look and feel
 hl.config({
     general = {
         layout = "scrolling",
-        border_size = 2,
+        border_size = 3,
         gaps_in = 2,
         gaps_out = 3,
 
+        -- Gradient is dynamically changing depending on window positions
         col = {
-            active_border   = "rgba(723ec3ff)",
+            active_border   = "rgba(595959aa)",
             inactive_border = "rgba(595959aa)",
         }
     },
