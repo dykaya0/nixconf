@@ -78,10 +78,16 @@ in
     };
     # QT setup
     qt = {
-        enable = true;
-        platformTheme.name = "gtk"; # follow gtk theme
-        style.name = "adwaita-dark";
+      enable = true;
+
+      platformTheme.name = "gtk";
+
+      style = {
+        name = "adwaita";
+        package = pkgs.adwaita-qt;
+      };
     };
+
     # Cursor(system-wide)
     home.pointerCursor = {
         gtk.enable = true;

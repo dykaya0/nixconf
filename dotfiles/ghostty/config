@@ -5,3 +5,5 @@ confirm-close-surface = false
 shell-integration-features = no-cursor
 cursor-style = block_hollow
 cursor-style-blink = false
+
+gtk-single-instance = true
