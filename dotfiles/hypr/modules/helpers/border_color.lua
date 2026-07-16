@@ -1,67 +1,27 @@
 local M = {}
+M.accent_color = "rgba(723ec3ff)"
+M.default_color = "rgba(595959aa)"
+M.border_angle = "0"
 
 function M.getBorderColor(first_color, second_color, angle_val)
     return { colors = { first_color, second_color }, angle = angle_val }
 end
 
--- TODO:refactor later
 function M.setBorderColor(left, right)
-    local accent_color = "rgba(723ec3ff)"
-    local default_color = "rgba(595959aa)"
-    local border_angle = "180"
-    local none_rule = function()
+    local first_color = left and M.accent_color or M.default_color
+    local second_color = right and M.accent_color or M.default_color
+
+    local border_rule = function()
         hl.config({
             general = {
                 col = {
-                    active_border = M.getBorderColor(default_color, default_color, border_angle),
-                    inactive_border = M.getBorderColor(default_color, default_color, border_angle),
+                    active_border = M.getBorderColor(first_color, second_color, M.border_angle),
                 }
             }
         })
     end
 
-    local left_rule = function()
-        hl.config({
-            general = {
-                col = {
-                    active_border = M.getBorderColor(default_color, accent_color, border_angle),
-                    inactive_border = M.getBorderColor(default_color, default_color, border_angle),
-                }
-            }
-        })
-    end
-
-    local right_rule = function()
-        hl.config({
-            general = {
-                col = {
-                    active_border = M.getBorderColor(accent_color, default_color, border_angle),
-                    inactive_border = M.getBorderColor(default_color, default_color, border_angle),
-                }
-            }
-        })
-    end
-
-    local both_rule = function()
-        hl.config({
-            general = {
-                col = {
-                    active_border = M.getBorderColor(accent_color, accent_color, border_angle),
-                    inactive_border = M.getBorderColor(default_color, default_color, border_angle),
-                }
-            }
-        })
-    end
-
-    if left == true and right == true then
-        both_rule()
-    elseif left == false and right == true then
-        right_rule()
-    elseif left == true and right == false then
-        left_rule()
-    elseif left == false and right == false then
-        none_rule()
-    end
+    border_rule()
 end
 
 function M.EvaluateBorderColor()
