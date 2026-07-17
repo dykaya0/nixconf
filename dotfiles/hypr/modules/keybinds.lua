@@ -32,9 +32,17 @@ hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.move({ direction = "down" }))
 hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.move({ direction = "up" }))
 hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.move({ direction = "right" }))
 
---- Swap columns
-hl.bind(mainMod .. " + comma", hl.dsp.layout("swapcol l"))
-hl.bind(mainMod .. " + period", hl.dsp.layout("swapcol r"))
+--- Swap columns (swaps columns and focuses inactive window.Very janky solution
+--- and does not support wrapped columns but good for dynamic border colors)
+
+hl.bind(mainMod .. " + comma", function()
+    hl.dispatch(hl.dsp.layout("swapcol l"))
+    hl.dispatch(hl.dsp.focus({ direction = "right" }))
+end)
+hl.bind(mainMod .. " + period", function()
+    hl.dispatch(hl.dsp.layout("swapcol r"))
+    hl.dispatch(hl.dsp.focus({ direction = "left" }))
+end)
 
 --- Resize columns
 hl.bind(mainMod .. " + equal", hl.dsp.layout("colresize all 0.5"))
@@ -56,8 +64,10 @@ hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:ter
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
--- Multimedia keys for volume and LCD brightness
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
+-- Other
+
+--- Multimedia keys for volume and LCD brightness
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"),
     { locked = true, repeating = true })
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
     { locked = true, repeating = true })
@@ -68,19 +78,25 @@ hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURC
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
 
--- Requires playerctl
+--- Requires playerctl
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
 
--- Zoom
+--- Tomato Timer Shortcuts
+hl.bind("SUPER + F10",
+    hl.dsp.send_shortcut({ mods = "", key = "P", window = "title:^(tomato)$" })
+) -- Send P to tomato timer when SUPER + F10 is pressed. Stops timer
+hl.bind("SUPER + F8",
+    hl.dsp.send_shortcut({ mods = "", key = "S", window = "title:^(tomato)$" })
+) -- Send S to tomato timer when SUPER + F10 is pressed. Skips break or remaining time
+
+--- Zoom
 local MAX_ZOOM = 3
 local MIN_ZOOM = 1
 local ZOOM_TOGGLE_FACTOR = 1.5
 
----@param offset number
----@return nil
 local function zoom(offset)
     local current = hl.get_config("cursor.zoom_factor")
     if offset ~= nil then

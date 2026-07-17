@@ -32,21 +32,21 @@ function M.EvaluateBorderColor()
     local active_window = hl.get_active_window()
     if active_window ~= nil then
         active_window_x = active_window.at.x
-    end
 
-    local active_workspace = hl.get_active_workspace()
-    if active_workspace ~= nil then
-        local windows = active_workspace:get_windows()
+        local active_workspace = hl.get_active_workspace()
+        if active_workspace ~= nil then
+            local windows = active_workspace:get_windows()
 
-        for _, val in pairs(windows) do
-            if val.at.x < active_window_x then
-                hasLeftNeighbor = true
-            elseif val.at.x > active_window_x then
-                hasRightNeighbor = true
+            for _, val in pairs(windows) do
+                if val.at.x < active_window_x then
+                    hasLeftNeighbor = true
+                elseif val.at.x > active_window_x then
+                    hasRightNeighbor = true
+                end
             end
-        end
 
-        M.setBorderColor(hasLeftNeighbor, hasRightNeighbor)
+            M.setBorderColor(hasLeftNeighbor, hasRightNeighbor)
+        end
     end
 end
 

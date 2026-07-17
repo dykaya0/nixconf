@@ -43,6 +43,7 @@ in
             nsxiv
             obs-studio
             pavucontrol
+            playerctl
             rsync
             shell_scripts.clipboard_history
             shell_scripts.screenshot_menu

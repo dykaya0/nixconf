@@ -6,14 +6,13 @@ hl.on("config.reloaded", function(m)
         timeout = 3000,
         icon = "info"
     })
+end)
 
+
+hl.on("window.destroy", function(_)
     border_helper.EvaluateBorderColor()
 end)
 
 hl.on("window.active", function(_)
-    border_helper.EvaluateBorderColor()
-end)
-
-hl.on("window.destroy", function(_)
     border_helper.EvaluateBorderColor()
 end)
