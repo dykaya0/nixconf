@@ -1,6 +1,6 @@
 mainMod = "SUPER"
 
-browser = "firefox --new-window"
+browser = "firefox"
 terminal = 'ghostty --working-directory="$HOME"'
 appLauncher = "rofi -show drun"
 fileManager = "thunar"

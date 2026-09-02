@@ -45,7 +45,7 @@ hl.config({
         numlock_by_default = true,
         follow_mouse = 1,
 
-        kb_layout = "gb, tr",
+        kb_layout = "us, tr",
         kb_options = "caps:swapescape",
 
         sensitivity = -0.5,

@@ -51,6 +51,7 @@ in
             shell_scripts.tms
             shell_scripts.waybar_refresh
             shell_scripts.xkblayout
+            texliveFull
             tealdeer
             (tomato-c.overrideAttrs (old: {
               patches = (old.patches or []) ++ [

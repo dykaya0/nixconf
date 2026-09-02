@@ -271,7 +271,8 @@
              (org-level-3 ((t (:height 1.1 :weight bold))))
              (org-level-4 ((t (:weight semi-bold))))
              :config
-
+             (setq org-file-apps
+             (append '(("\\.pdf\\'" . "firefox %s")) org-file-apps))
              (setq org-directory "~/org")
              (setq org-agenda-files (directory-files-recursively org-directory "\\.org$"))
              (setq org-log-done 'time)
@@ -319,19 +320,79 @@
              ;; Org Capure Templates
              (setq org-capture-templates
                    '(
-                     ("i" "New idea" entry (file+headline (lambda () (concat org-directory "/ideas.org")) "Ideas")
-                      "* IDEA %?\n  %i\n ")
-                     ("t" "New todo" entry (file+headline (lambda () (concat org-directory "/life.org")) "Todos")
-                      "* TODO %?\n  %i\n ")
+                     ("t" "Todo" entry (file (lambda () (concat org-directory "/refile.org")))
+                      "* TODO %?\nDEADLINE: %T\n")
+
+                     ("c" "content")
+                     ("cm" "movie" entry
+                      (file+headline (lambda () (concat org-directory "/content.org")) "Film")
+                      "* BACK %? :movie:\n%U\n")
+                     ("cs" "shows" entry
+                      (file+headline (lambda () (concat org-directory "/content.org")) "Dizi")
+                      "* BACK %? :show:\n%U\n")
+                     ("ca" "anime" entry
+                      (file+headline (lambda () (concat org-directory "/content.org")) "Anime")
+                      "* BACK %? :anime:\n%U\n")
+                     ("cg" "games" entry
+                      (file+headline (lambda () (concat org-directory "/content.org")) "Oyun")
+                      "* BACK %? :game:\n%U\n")
+
+                     ("u" "Update Current Clocked Heading" text
+                      (clock)
+                      "%?"
+                      :unnarrowed t)
+
+                     ("k" "knowledge")
+                     ("kp" "project" entry
+                      (file+olp (lambda () (concat org-directory "/archive.org")) "Projeler")
+                      "* %?\nEklenme tarihi %U\n")
+                     ("kk" "knowledge" entry
+                      (file+olp (lambda () (concat org-directory "/archive.org")) "Bilgiler")
+                      "* %? %^g\nEklenme tarihi %U\n")
+                     ("ki" "ideas" entry
+                      (file+olp (lambda () (concat org-directory "/archive.org")) "Proje Fikirleri")
+                      "* %?\nEklenme tarihi %U\n")
+                     ("kt" "thoughts" entry
+                      (file+olp (lambda () (concat org-directory "/archive.org")) "Düşünceler")
+                      "* %?\nEklenme tarihi %U\n")
+
+
+                     ("j" "journal")
+                     ("jd" "daily" entry
+                      (file+olp (lambda () (concat org-directory "/mylife.org")) "Ajanda")
+                      "* %<%Y-%m-%d %A> (Week %<%V> | %<%B>)\n** Yaptıklarım\n- [ ] %?\n** Yapılacaklar\n- [ ] ")
+
+                     ("jw" "weekly" entry
+                      (file+olp (lambda () (concat org-directory "/archive.org")) "Haftalık Retrospektif")
+                      "* Week %<%V> | %<%B>\n** Yaptıklarım\n- [ ] %?\n** Yapılacaklar\n- [ ] \n** Günler :REFILE:")
+
+                     ("jm" "monthly" entry
+                      (file+olp (lambda () (concat org-directory "/archive.org")) "Aylık Retrospektif")
+                      "* %<%B> | %<%Y>\n** Yaptıklarım\n- [ ] %?\n** Yapılacaklar\n- [ ] \n** Haftalar :REFILE:")
+
+                     ("jy" "yearly" entry
+                      (file+olp (lambda () (concat org-directory "/archive.org")) "Yıllık Retrospektif")
+                      "* %<%Y>\n** Yaptıklarım\n- [ ] %?\n** Yapılacaklar\n- [ ] \n** Aylar :REFILE:")
                      ))
 
-             ;; Org Agenda Views
-             (setq org-agenda-block-separator ?~)
-             (setq org-agenda-time-grid
-                   (quote
-                     ((daily today remove-match)
-                      (600 700 800 900 1000 1100 1200 1300 1400 1500 1600 1800 2000 2200)
-                      "......" "----------------")))
+            (setq org-refile-targets
+                  '(("journal.org" :tag . "REFILE")
+                    ("mylife.org" :tag . "REFILE")
+                    ("archive.org" :tag . "REFILE")
+                    ("content.org" :tag . "REFILE")
+                    ("done.org" :tag . "REFILE")
+                    ("notes.org" :tag . "REFILE")
+                    ("project.org" :tag . "REFILE")))
+            (setq org-refile-use-outline-path 'file)
+            (setq org-outline-path-complete-in-steps nil)
+
+            ;; Org Agenda Views
+            (setq org-agenda-block-separator ?~)
+            (setq org-agenda-time-grid
+                  (quote
+                    ((daily today remove-match)
+                     (600 700 800 900 1000 1100 1200 1300 1400 1500 1600 1800 2000 2200)
+                     "......" "----------------")))
 
              (setq org-agenda-custom-commands
                    '(
@@ -371,6 +432,12 @@
 
 
              )
+(with-eval-after-load 'ox-latex
+     (add-to-list 'org-latex-classes
+                  '("moderncv"
+                    "\\documentclass{moderncv}"
+                    ("\\section{%s}" . "\\section*{%s}")
+                    ("\\subsection{%s}" . "\\subsection*{%s}"))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Dired
