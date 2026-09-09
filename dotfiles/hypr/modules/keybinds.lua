@@ -45,8 +45,8 @@ hl.bind(mainMod .. " + period", function()
 end)
 
 --- Resize columns
-hl.bind(mainMod .. " + equal", hl.dsp.layout("colresize all 0.5"))
-hl.bind(mainMod .. " + minus", hl.dsp.layout("colresize all 1"))
+hl.bind(mainMod .. " + equal", hl.dsp.layout("colresize 0.5"))
+hl.bind(mainMod .. " + minus", hl.dsp.layout("colresize 1"))
 
 -- Default workspace keybindings
 for i = 1, 9 do

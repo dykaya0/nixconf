@@ -34,6 +34,18 @@
 (setq use-short-answers t)     ; so that yes/no questions in the minibuffer can be answered using y/n
 (setq-default tab-width 4)     ; make default tab spacing 4
 (setq browse-url-generic-program "xdg-open") ; open URLs in the default web browser (not EWW) using XDG's util
+(setq backup-directory-alist
+      `(("." . ,(expand-file-name "backups/" user-emacs-directory))))
+;; Turkish ASCII abbreviations
+(load (expand-file-name "turkish-abbrevs.el"
+                        "~/nixconf/dotfiles/emacs/"))
+
+(defun my/org-turkish-abbrevs ()
+  "Enable Turkish ASCII abbreviations in Org buffers."
+  (setq-local abbrev-mode t)
+  (setq-local local-abbrev-table turkish-ascii-abbrev-table))
+
+(add-hook 'org-mode-hook #'my/org-turkish-abbrevs)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Theme
@@ -315,6 +327,7 @@
              (global-set-key (kbd "C-c c") #'org-capture)
              (global-set-key (kbd "C-c a") #'org-agenda)
              (global-set-key (kbd "C-c t") #'org-todo)
+             (global-set-key (kbd "C-c u") #'unexpand-abbrev)
 
 
              ;; Org Capure Templates
@@ -360,19 +373,19 @@
                      ("j" "journal")
                      ("jd" "daily" entry
                       (file+olp (lambda () (concat org-directory "/mylife.org")) "Ajanda")
-                      "* %<%Y-%m-%d %A> (Week %<%V> | %<%B>)\n** Yaptıklarım\n- [ ] %?\n** Yapılacaklar\n- [ ] ")
+                      "* %<%Y-%m-%d %A> (Week %<%V> | %<%B>)\n** Retrospektif\n- [ ] %?\n** Yapılacaklar\n- [ ] ")
 
                      ("jw" "weekly" entry
                       (file+olp (lambda () (concat org-directory "/archive.org")) "Haftalık Retrospektif")
-                      "* Week %<%V> | %<%B>\n** Yaptıklarım\n- [ ] %?\n** Yapılacaklar\n- [ ] \n** Günler :REFILE:")
+                      "* Week %<%V> | %<%B>\n** Retrospektif\n- [ ] %?\n** Yapılacaklar\n- [ ] \n** Günler :REFILE:")
 
                      ("jm" "monthly" entry
                       (file+olp (lambda () (concat org-directory "/archive.org")) "Aylık Retrospektif")
-                      "* %<%B> | %<%Y>\n** Yaptıklarım\n- [ ] %?\n** Yapılacaklar\n- [ ] \n** Haftalar :REFILE:")
+                      "* %<%B> | %<%Y>\n** Retrospektif\n- [ ] %?\n** Yapılacaklar\n- [ ] \n** Haftalar :REFILE:")
 
                      ("jy" "yearly" entry
                       (file+olp (lambda () (concat org-directory "/archive.org")) "Yıllık Retrospektif")
-                      "* %<%Y>\n** Yaptıklarım\n- [ ] %?\n** Yapılacaklar\n- [ ] \n** Aylar :REFILE:")
+                      "* %<%Y>\n** Retrospektif\n- [ ] %?\n** Yapılacaklar\n- [ ] \n** Aylar :REFILE:")
                      ))
 
             (setq org-refile-targets

@@ -12,6 +12,13 @@ in
         package = pkgs.mullvad-vpn;
     };
 
+    services.mealie = {
+        enable = true;
+        settings = {
+            ALLOW_SIGNUP = "true";
+        };
+    };
+
     environment.systemPackages = with pkgs; [
             awww
             anki-bin
