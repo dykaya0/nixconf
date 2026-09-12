@@ -7,6 +7,8 @@ in
     programs.bash.enable = true;
     programs.ssh.startAgent = true;
     programs.thunar.enable = true;
+    programs.wireshark.enable = true;
+
     services.mullvad-vpn = {
         enable = true;
         package = pkgs.mullvad-vpn;
@@ -18,6 +20,7 @@ in
             ALLOW_SIGNUP = "true";
         };
     };
+
 
     environment.systemPackages = with pkgs; [
             awww

@@ -43,7 +43,7 @@
                             users.dogukan = import ./home/dogukan.nix;
                             backupFileExtension = "backup";
                             extraSpecialArgs = {
-                                inherit self inputs system;
+                                inherit self inputs system hostname;
                             };
                         };
                     }

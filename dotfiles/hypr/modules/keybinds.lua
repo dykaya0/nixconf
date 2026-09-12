@@ -10,14 +10,13 @@ hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(emacs))
-hl.bind(mainMod .. " + F2", hl.dsp.exec_cmd("audio_switcher"))
+hl.bind(mainMod .. " + F2", hl.dsp.exec_cmd("switch_audio"))
 hl.bind(mainMod .. " + F5", hl.dsp.exec_cmd("hyprctl reload"))
-hl.bind(mainMod .. " + F8", hl.dsp.exec_cmd("passrofi"))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("waybar_refresh"))
-hl.bind(mainMod .. " + F12", hl.dsp.exec_cmd("screenshot_menu"))
+hl.bind(mainMod .. " + F12", hl.dsp.exec_cmd("screenshot_menu" .. " Monitor"))
+hl.bind(mainMod .. " + SHIFT + F12", hl.dsp.exec_cmd("screenshot_menu"))
 hl.bind("ALT + C", hl.dsp.exec_cmd("clipboard_history"))
 hl.bind("ALT + SPACE", hl.dsp.exec_cmd(appLauncher))
-hl.bind("PRINT", hl.dsp.exec_cmd("screenshot_menu" .. " Monitor"))
 
 -- Layout
 --- Focus window
@@ -85,10 +84,10 @@ hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tru
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
 
 --- Tomato Timer Shortcuts
-hl.bind("SUPER + F10",
+hl.bind(mainMod .. " + F10",
     hl.dsp.send_shortcut({ mods = "", key = "P", window = "title:^(tomato)$" })
 ) -- Send P to tomato timer when SUPER + F10 is pressed. Stops timer
-hl.bind("SUPER + F8",
+hl.bind(mainMod .. " + F8",
     hl.dsp.send_shortcut({ mods = "", key = "S", window = "title:^(tomato)$" })
 ) -- Send S to tomato timer when SUPER + F10 is pressed. Skips break or remaining time
 
@@ -110,10 +109,10 @@ local function zoom(offset)
     hl.config({ cursor = { zoom_factor = current } })
 end
 
-hl.bind("SUPER + Z", zoom)
-hl.bind("SUPER + KP_ADD", function()
+hl.bind(mainMod .. " + Z", zoom)
+hl.bind(mainMod .. " + KP_ADD", function()
     zoom(0.5)
 end)
-hl.bind("SUPER + KP_SUBTRACT", function()
+hl.bind(mainMod .. " + KP_SUBTRACT", function()
     zoom(-0.5)
 end)

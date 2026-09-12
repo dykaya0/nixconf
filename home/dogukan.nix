@@ -1,4 +1,4 @@
-{ config, pkgs, ...}:
+{ config, pkgs, hostname, ...}:
 let 
 repo_name = "nixconf";
 dotfiles = "${config.home.homeDirectory}/${repo_name}/dotfiles";
@@ -16,6 +16,7 @@ in
 {
     imports = [
         ../modules/home-manager/firefox.nix
+        ../modules/home-manager/wayle.nix
     ];
     home.username = "dogukan";
     home.homeDirectory = "/home/dogukan";
@@ -33,16 +34,16 @@ in
 
     home.packages = with pkgs; [
         kitty
-        gcc
-        gnumake
-        neovim
-        ripgrep
-        rofi
-        tmux
-        waybar
+            gcc
+            gnumake
+            neovim
+            ripgrep
+            rofi
+            tmux
+            waybar
     ];
 
-    # GTK setup
+# GTK setup
     gtk = {
         enable = true;
 
@@ -76,19 +77,19 @@ in
             gtk-application-prefer-dark-theme = true;
         };
     };
-    # QT setup
+# QT setup
     qt = {
-      enable = true;
+        enable = true;
 
-      platformTheme.name = "gtk";
+        platformTheme.name = "gtk";
 
-      style = {
-        name = "adwaita";
-        package = pkgs.adwaita-qt;
-      };
+        style = {
+            name = "adwaita";
+            package = pkgs.adwaita-qt;
+        };
     };
 
-    # Cursor(system-wide)
+# Cursor(system-wide)
     home.pointerCursor = {
         gtk.enable = true;
         x11.enable = true;
