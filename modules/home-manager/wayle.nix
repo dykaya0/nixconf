@@ -19,15 +19,6 @@
                         "dashboard"
                             "clock"
                             "weather"
-                            {
-                                modules = [
-                                    "cpu"
-                                        "ram"
-                                        "storage"
-                                        "netstat"
-                                ];
-                                name = "hardware";
-                            }
                     ];
                     monitor = "*";
                     right = [

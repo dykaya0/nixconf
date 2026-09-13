@@ -6,7 +6,6 @@ hl.config({
         gaps_in = 2,
         gaps_out = 3,
 
-        -- Gradient is dynamically changing depending on window positions
         col = {
             active_border   = "rgba(595959aa)",
             inactive_border = "rgba(595959aa)",
