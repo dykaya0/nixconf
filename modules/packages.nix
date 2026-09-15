@@ -49,6 +49,7 @@ in
             hyprshot
             kdePackages.okular
             kdePackages.kclock
+            libnotify
             mpv
             nsxiv
             obs-studio

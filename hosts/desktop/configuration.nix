@@ -15,12 +15,6 @@
 
     networking.hostName = "nixos";
 
-    services.displayManager.sddm.settings = {
-        Autologin = {
-            Session = "hyprland.desktop";
-            User = config.users.users.dogukan.name;
-        };
-    };
 # Bootloader
     boot.loader = {
         efi.canTouchEfiVariables = true;

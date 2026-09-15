@@ -34,7 +34,7 @@ hl.config({
     },
 
     animations = {
-        enabled = false, -- Another breaking update
+        enabled = true, -- Another breaking update
     }
 })
 
@@ -88,16 +88,15 @@ hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
 -- Animation
 --- Curves
 
-hl.curve("quick", { type = "bezier", points = { { 0.15, 0 }, { 0.1, 1 } } })
-hl.curve("easy", { type = "spring", mass = 1, stiffness = 71.2633, dampening = 15.8273644 })
+hl.curve( "overshoot", { type = "bezier", points = { {0.5, 0.9}, {0.1, 1.1} } } )
+hl.curve("overshoot-subtle", { type = "bezier", points = { {0.45, 0.9}, {0.15, 1.04}, }, })
+hl.curve("smooth", { type = "bezier", points = { {0.25, 0.1}, {0.25, 1.0}, }, })
+hl.curve("snap", { type = "bezier", points = { {0.7, 0.0}, {0.2, 1.0}, }, })
 
-hl.animation({ leaf = "global", enabled = true, speed = 0.2, bezier = "quick" })
-hl.animation({ leaf = "windows", enabled = true, speed = 0.2, spring = "easy" })
-hl.animation({ leaf = "border", enabled = true, speed = 0.2, spring = "easy" })
-hl.animation({ leaf = "fade", enabled = true, speed = 0.2, bezier = "quick" })
-hl.animation({ leaf = "layers", enabled = true, speed = 0.2, bezier = "quick" })
-hl.animation({ leaf = "workspaces", enabled = false, speed = 0.2, bezier = "quick", style = "fade" })
-hl.animation({ leaf = "zoomFactor", enabled = true, speed = 0.2, bezier = "quick" })
+hl.animation({ leaf = "workspaces", enabled = true, speed = 2, bezier = "smooth", style = "fade" })
+hl.animation({ leaf = "windows", enabled = true, speed = 3, bezier = "overshoot-subtle", style = "slide"})
+hl.animation({ leaf = "fade", enabled = true, speed = 3, bezier = "smooth"})
+hl.animation({ leaf = "layers", enabled = true, speed = 3, bezier = "smooth", style = "fade"})
 
 
 hl.config({

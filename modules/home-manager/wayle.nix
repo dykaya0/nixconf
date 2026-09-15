@@ -6,6 +6,7 @@
         autoInstallDependencies = true;
         settings = {
             bar = {
+                scale = if hostname == "desktop" then 0.75 else 0.5;
                 button-label-size = 1.1;
                 button-rounding = "md";
                 button-variant = "basic";
@@ -35,9 +36,14 @@
                     show = true;
                 }
                 ];
-                scale = 0.75;
             };
             modules = {
+                notifications = {
+                    popup-monitor = if hostname == "desktop" then "DP-2" else "primary";
+                };
+                dashboard = {
+                    dropdown-logout-command = "loginctl kill-session $XDG_SESSION_ID";
+                };
                 clock = {
                     dropdown-show-seconds = true;
                     format = "%H:%M";
@@ -70,9 +76,6 @@
                     time-format = "24h";
                     units = "metric";
                 };
-            };
-            notifications = {
-                popup-monitor = if hostname == "desktop" then "DP-2" else "primary";
             };
             osd = {
                 monitor = if hostname == "desktop" then "DP-2" else "primary";

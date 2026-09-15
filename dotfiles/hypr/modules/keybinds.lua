@@ -1,10 +1,13 @@
 -- Essentials
-hl.bind(mainMod .. " + C", hl.dsp.window.close())
+--- columns
 hl.bind(mainMod .. " + F", hl.dsp.layout("colresize 1"))
-hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
-hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exit())
-hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + SHIFT + V", hl.dsp.layout("colresize 0.5"))
 hl.bind(mainMod .. " + M", hl.dsp.layout("swapwithmaster master"))
+
+hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
+hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exit())
+hl.bind(mainMod .. " + C", hl.dsp.window.close())
 
 -- exec_cmd keybindings
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
@@ -44,9 +47,6 @@ hl.bind(mainMod .. " + period", function()
     hl.dispatch(hl.dsp.focus({ direction = "left" }))
 end)
 
---- Resize columns
-hl.bind(mainMod .. " + equal", hl.dsp.layout("colresize 0.5"))
-hl.bind(mainMod .. " + minus", hl.dsp.layout("colresize 1"))
 
 -- Default workspace keybindings
 for i = 1, 9 do
@@ -84,11 +84,11 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
 
-hl.bind(mainMod .. " + Page_Up", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"),
+hl.bind(mainMod .. " + Up", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"),
     { locked = true, repeating = true })
-hl.bind(mainMod .. " + Page_Down", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
+hl.bind(mainMod .. " + Down", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
     { locked = true, repeating = true })
-hl.bind(mainMod .. " + Home", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
+hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 
 --- Tomato Timer Shortcuts
 hl.bind(mainMod .. " + F10",
