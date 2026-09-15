@@ -23,6 +23,7 @@
             ls="eza -1";
             lsa="eza -a1";
             lsla="eza -la1";
+            ncd="f() { cd $1 && nvim .; }; f";
         };
         shellInit = ''
             eval "$(starship init zsh)"

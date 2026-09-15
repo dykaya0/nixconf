@@ -8,6 +8,7 @@
         ../../modules/nvidia.nix
         ../../modules/sound.nix
         ../../modules/hyprland.nix
+        ../../modules/qylock.nix
         ../../modules/shell.nix
         ../../modules/packages.nix
     ];

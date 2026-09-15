@@ -17,6 +17,7 @@ in
     imports = [
         ../modules/home-manager/firefox.nix
         ../modules/home-manager/wayle.nix
+        ../modules/submodules/wallpaper-changer.nix
     ];
     home.username = "dogukan";
     home.homeDirectory = "/home/dogukan";

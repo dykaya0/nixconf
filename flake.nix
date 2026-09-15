@@ -1,9 +1,9 @@
 {
 	description = "NixOS Config";
 	inputs = {
-		nixpkgs.url = "nixpkgs/nixos-26.05";
+		nixpkgs.url = "nixpkgs/nixos-unstable";
 		home-manager = {
-			url = "github:nix-community/home-manager/release-26.05";
+			url = "github:nix-community/home-manager";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
         firefox-addons = {
@@ -14,9 +14,13 @@
             url = "github:nix-community/emacs-overlay";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        qylock = {
+            url = "github:Darkkal44/qylock";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
 	};
 
-	outputs = inputs @ { self, nixpkgs, home-manager, ... }: 
+	outputs = inputs @ { self, nixpkgs, home-manager,qylock, ... }: 
         let
 			system = "x86_64-linux";
             mkHost = hostname:

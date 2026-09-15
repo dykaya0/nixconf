@@ -8,15 +8,10 @@
     };
 
     services.hypridle.enable = true;
-    programs.hyprlock.enable = true;
     xdg.portal = {
         enable = true;
         extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
     };
 
     security.pam.services.login.fprintAuth = false;
-    services.displayManager.sddm = {
-        enable = true;
-        wayland.enable = true;
-    };
 }

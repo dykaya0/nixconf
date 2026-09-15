@@ -34,7 +34,7 @@ hl.config({
     },
 
     animations = {
-        enabled = true,
+        enabled = false, -- Another breaking update
     }
 })
 
@@ -87,16 +87,17 @@ hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
 
 -- Animation
 --- Curves
+
 hl.curve("quick", { type = "bezier", points = { { 0.15, 0 }, { 0.1, 1 } } })
 hl.curve("easy", { type = "spring", mass = 1, stiffness = 71.2633, dampening = 15.8273644 })
 
-hl.animation({ leaf = "global", enabled = true, speed = 10, bezier = "quick" })
-hl.animation({ leaf = "windows", enabled = true, speed = 5, spring = "easy" })
-hl.animation({ leaf = "border", enabled = true, speed = 15, spring = "easy" })
-hl.animation({ leaf = "fade", enabled = true, speed = 3, bezier = "quick" })
-hl.animation({ leaf = "layers", enabled = true, speed = 4, bezier = "quick" })
-hl.animation({ leaf = "workspaces", enabled = false, speed = 2, bezier = "quick", style = "fade" })
-hl.animation({ leaf = "zoomFactor", enabled = true, speed = 10, bezier = "quick" })
+hl.animation({ leaf = "global", enabled = true, speed = 0.2, bezier = "quick" })
+hl.animation({ leaf = "windows", enabled = true, speed = 0.2, spring = "easy" })
+hl.animation({ leaf = "border", enabled = true, speed = 0.2, spring = "easy" })
+hl.animation({ leaf = "fade", enabled = true, speed = 0.2, bezier = "quick" })
+hl.animation({ leaf = "layers", enabled = true, speed = 0.2, bezier = "quick" })
+hl.animation({ leaf = "workspaces", enabled = false, speed = 0.2, bezier = "quick", style = "fade" })
+hl.animation({ leaf = "zoomFactor", enabled = true, speed = 0.2, bezier = "quick" })
 
 
 hl.config({

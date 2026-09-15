@@ -1,6 +1,7 @@
 -- Essentials
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
-hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
+hl.bind(mainMod .. " + F", hl.dsp.layout("colresize 1"))
+hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
 hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exit())
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + M", hl.dsp.layout("swapwithmaster master"))
@@ -82,6 +83,12 @@ hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
+
+hl.bind(mainMod .. " + Page_Up", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"),
+    { locked = true, repeating = true })
+hl.bind(mainMod .. " + Page_Down", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
+    { locked = true, repeating = true })
+hl.bind(mainMod .. " + Home", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 
 --- Tomato Timer Shortcuts
 hl.bind(mainMod .. " + F10",

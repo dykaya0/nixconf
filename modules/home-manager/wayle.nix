@@ -53,7 +53,7 @@
                 keyboard-input = {
                     layout-alias-map = {
                         "English (US)" = "EN";
-                        "Turkish (QWERTY)" = "TR";
+                        "Turkish" = "TR";
                     };
                 };
                 power = {
@@ -70,6 +70,9 @@
                     time-format = "24h";
                     units = "metric";
                 };
+            };
+            notifications = {
+                popup-monitor = if hostname == "desktop" then "DP-2" else "primary";
             };
             osd = {
                 monitor = if hostname == "desktop" then "DP-2" else "primary";
