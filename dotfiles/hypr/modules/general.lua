@@ -7,7 +7,7 @@ hl.config({
         gaps_out = 3,
 
         col = {
-            active_border   = "rgba(595959aa)",
+            active_border   = "rgba(c4b28aaa)",
             inactive_border = "rgba(595959aa)",
         }
     },
@@ -34,7 +34,7 @@ hl.config({
     },
 
     animations = {
-        enabled = true, -- Another breaking update
+        enabled = true,
     }
 })
 
@@ -45,7 +45,7 @@ hl.config({
         follow_mouse = 1,
 
         kb_layout = "us, tr",
-        kb_options = "caps:swapescape",
+        kb_options = "caps:escape",
 
         sensitivity = -0.5,
         scroll_button_lock = true,

@@ -12,32 +12,48 @@
                 button-variant = "basic";
                 layout = [
                 {
-                    center = [
-                        "hyprland-workspaces"
-                            "notifications"
-                    ];
                     left = [
-                        "dashboard"
                             "clock"
                             "weather"
+                            "keyboard-input"
+                            "idle-inhibit"
+                            "bluetooth"
+                            "separator"
+                            "custom-tomato_timer"
+                    ];
+                    center = [
+                        "hyprland-workspaces"
                     ];
                     monitor = "*";
                     right = [
                         "systray"
-                            "keyboard-input"
-                            "idle-inhibit"
-                            "bluetooth"
+                            "notifications"
                             "battery"
                             "brightness"
                             "network"
                             "volume"
-                            "power"
+                            "dashboard"
                     ];
                     show = true;
                 }
                 ];
             };
             modules = {
+                custom = [
+                {
+                    id = "tomato_timer";
+                    command = "tomato -t | sed 's/[^0-9:]//g'";
+                    format = "{{ output | trim }}";
+                    interval-ms = 1000;
+                    hide-if-empty = true;
+                    icon-show = false;
+                }
+                ];
+                separator = {
+                    size = 1;
+                    length = 1.5;
+                    color = "fg-subtle";
+                };
                 notifications = {
                     popup-monitor = if hostname == "desktop" then "DP-2" else "primary";
                 };
@@ -61,9 +77,6 @@
                         "English (US)" = "EN";
                         "Turkish" = "TR";
                     };
-                };
-                power = {
-                    left-click = "wlogout";
                 };
                 volume = {
                     middle-click = "pavucontrol";

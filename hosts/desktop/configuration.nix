@@ -6,7 +6,6 @@
 
             ../../modules/system.nix
             ../../modules/hyprland.nix
-            ../../modules/qylock.nix
             ../../modules/nvidia.nix
             ../../modules/sound.nix
             ../../modules/shell.nix

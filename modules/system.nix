@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, pkgs, ... }:
 {
     system.stateVersion = "26.05";
     nix.settings.experimental-features = [
@@ -9,7 +9,18 @@
       "root"
       "@wheel"
     ];
+    services.greetd = {
+        enable = true;
+        settings = {
+            default_session = {
+                user = "greeter";
+                command = lib.getExe pkgs.tuigreet + " --time --remember --remember-session";
+            };
+        };
+    };
 
+    #services.displayManager.sddm.enable = true;
+    #services.displayManager.sddm.wayland.enable = true;
     # Time and Networking
     time.timeZone = "Europe/Istanbul";
     nixpkgs.config.allowUnfree = true;

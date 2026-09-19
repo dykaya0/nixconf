@@ -14,13 +14,9 @@
             url = "github:nix-community/emacs-overlay";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        qylock = {
-            url = "github:Darkkal44/qylock";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
 	};
 
-	outputs = inputs @ { self, nixpkgs, home-manager,qylock, ... }: 
+	outputs = inputs @ { self, nixpkgs, home-manager, ... }: 
         let
 			system = "x86_64-linux";
             mkHost = hostname:

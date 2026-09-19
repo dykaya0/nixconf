@@ -6,8 +6,11 @@ in
     programs.git.enable = true;
     programs.bash.enable = true;
     programs.ssh.startAgent = true;
-    programs.thunar.enable = true;
     programs.wireshark.enable = true;
+
+    programs.thunar.enable = true;
+    services.gvfs.enable = true; # Mount, trash, and other functionalities
+    services.tumbler.enable = true; # Thumbnail support for images
 
     services.mullvad-vpn = {
         enable = true;
@@ -47,6 +50,7 @@ in
             ghostty
             gimp
             hyprshot
+            hyprlock
             kdePackages.okular
             kdePackages.kclock
             libnotify

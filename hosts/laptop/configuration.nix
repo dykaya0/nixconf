@@ -8,7 +8,6 @@
         ../../modules/nvidia.nix
         ../../modules/sound.nix
         ../../modules/hyprland.nix
-        ../../modules/qylock.nix
         ../../modules/shell.nix
         ../../modules/packages.nix
     ];
@@ -33,6 +32,7 @@
 
     # Laptop specific packages
     environment.systemPackages = with pkgs; [
+        upower
         brightnessctl
     ];
 }
