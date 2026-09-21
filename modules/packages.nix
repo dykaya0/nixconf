@@ -6,7 +6,29 @@ in
     programs.git.enable = true;
     programs.bash.enable = true;
     programs.ssh.startAgent = true;
-    programs.wireshark.enable = true;
+
+    programs.foot = {
+        enable = true;
+        theme = "poimandres";
+        settings = {
+            main = {
+                font = "CaskaydiaMono:size=15";
+                dpi-aware = "yes";
+                term = "xterm-256color";
+            };
+            scrollback = {
+                lines = 10000;
+                multiplier = 3;
+            };
+            cursor = {
+                style = "block";
+                blink = "yes";
+                blink-rate = 500;
+            };
+        };
+    };
+
+    programs.wireshark.enable = false;
 
     programs.thunar.enable = true;
     services.gvfs.enable = true; # Mount, trash, and other functionalities
@@ -47,13 +69,13 @@ in
             eza
             fastfetch
             fzf
-            ghostty
             gimp
             hyprshot
             hyprlock
             kdePackages.okular
             kdePackages.kclock
             libnotify
+            monero-gui
             mpv
             nsxiv
             obs-studio
@@ -66,6 +88,7 @@ in
             shell_scripts.tms
             shell_scripts.waybar_refresh
             shell_scripts.xkblayout
+            shell_scripts.hyprland_scroll
             texliveFull
             tealdeer
             (tomato-c.overrideAttrs (old: {
@@ -73,12 +96,12 @@ in
                 ./patches/tomato-config.patch
               ];
             }))
+            tuigreet
             ungoogled-chromium
             unzip
             vim
             wget
             wl-clipboard
-            wlogout
             zip
             (emacsWithPackagesFromUsePackage {
              package = pkgs.emacs;
@@ -95,8 +118,12 @@ in
     ];
     fonts.packages = with pkgs; [
         noto-fonts
-        nerd-fonts.jetbrains-mono
-        nerd-fonts.iosevka
-        nerd-fonts.caskaydia-mono
+            noto-fonts-cjk-sans
+            noto-fonts-color-emoji
+            nerd-fonts.jetbrains-mono
+            nerd-fonts.iosevka
+            nerd-fonts.caskaydia-mono
+            nerd-fonts.fira-code
+            terminus_font_ttf
     ];
 }

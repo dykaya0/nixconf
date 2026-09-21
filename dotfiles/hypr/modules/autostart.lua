@@ -1,6 +1,5 @@
 hl.on("hyprland.start", function()
-    hl.exec_cmd("ghostty --initial-window=false --quit-after-last-window-closed=false")
-    hl.exec_cmd("ghostty")
+    hl.exec_cmd("foot --server")
     hl.exec_cmd("wayle shell")
     hl.exec_cmd("hypridle")
     hl.exec_cmd("awww-daemon")

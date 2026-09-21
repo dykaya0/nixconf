@@ -155,4 +155,19 @@
 
       hyprctl switchxkblayout "$device" "$direction"
     '';
+    hyprland_scroll = pkgs.writeShellScriptBin "hyprland_scroll" ''
+      export PATH="${pkgs.hyprland}/bin:$PATH"
+
+      set -euo pipefail
+
+        if [[ $# -ne 1 ]] && ! command -v "hyprctl" &>/dev/null; then
+            exit 1
+        fi
+
+        if [[ "$1" =~ ^(left|right|up|down)$ ]]; then
+            hyprctl dispatch "hl.dsp.focus({direction='$1'})"
+        else
+           exit 1
+        fi
+    '';
 }

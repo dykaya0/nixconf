@@ -13,6 +13,8 @@
                 layout = [
                 {
                     left = [
+                            "custom-hyprland_scroll_left"
+                            "separator"
                             "clock"
                             "weather"
                             "keyboard-input"
@@ -33,6 +35,8 @@
                             "network"
                             "volume"
                             "dashboard"
+                            "separator"
+                            "custom-hyprland_scroll_right"
                     ];
                     show = true;
                 }
@@ -47,6 +51,20 @@
                     interval-ms = 1000;
                     hide-if-empty = true;
                     icon-show = false;
+                }
+                {
+                    id = "hyprland_scroll_left";
+                    format = "";
+                    interval-ms = 0;
+                    icon-show = false;
+                    left-click = "hyprland_scroll left";
+                }
+                {
+                    id = "hyprland_scroll_right";
+                    format = "";
+                    interval-ms = 0;
+                    icon-show = false;
+                    left-click = "hyprland_scroll right";
                 }
                 ];
                 separator = {

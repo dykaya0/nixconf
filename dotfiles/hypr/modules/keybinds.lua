@@ -19,7 +19,7 @@ hl.bind(mainMod .. " + F5", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("waybar_refresh"))
 hl.bind(mainMod .. " + F12", hl.dsp.exec_cmd("screenshot_menu" .. " Monitor"))
 hl.bind(mainMod .. " + SHIFT + F12", hl.dsp.exec_cmd("screenshot_menu"))
-hl.bind("ALT + C", hl.dsp.exec_cmd("clipboard_history"))
+hl.bind(mainMod .. " + slash", hl.dsp.exec_cmd("clipboard_history"))
 hl.bind("ALT + SPACE", hl.dsp.exec_cmd(appLauncher))
 
 -- Layout

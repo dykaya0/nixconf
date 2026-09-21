@@ -1,7 +1,7 @@
 mainMod = "SUPER"
 
 browser = "firefox"
-terminal = 'ghostty --working-directory="$HOME"'
+terminal = "footclient"
 appLauncher = "rofi -show drun"
 fileManager = "thunar"
 emacs = "emacsclient -c -a ''"
