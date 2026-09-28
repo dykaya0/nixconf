@@ -6,6 +6,15 @@ hl.window_rule({
     opacity = "0.6 override 0.5 override 0.4 override"
 })
 
+hl.window_rule({
+    name = "FullscreenBorders",
+    match = {
+        fullscreen = true
+    },
+    border_color = "rgba(ff0000ff)",
+    border_size = 5,
+})
+
 local whole_column_classes = table.concat({
     "firefox",
     "chromium-browser",

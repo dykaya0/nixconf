@@ -170,4 +170,76 @@
            exit 1
         fi
     '';
+
+    battery_capacity = pkgs.writeShellScriptBin "battery_capacity" ''
+        set -euo pipefail
+
+        BAT_PATH=""
+        for bat in /sys/class/power_supply/BAT*; do
+            [ -d "$bat" ] && BAT_PATH="$bat" && break
+                done
+
+                    if [ -z "$BAT_PATH" ]; then
+                        exit 1
+                            fi
+
+                            CAPACITY=$(<"$BAT_PATH/capacity")
+                            STATUS=$(<"$BAT_PATH/status")
+
+                            DISCHARGING_ICONS=(
+                                    $'\uf244'   # 0   empty
+                                    $'\uf244'   # 10  empty
+                                    $'\uf243'   # 20  quarter
+                                    $'\uf243'   # 30  quarter
+                                    $'\uf242'   # 40  half
+                                    $'\uf242'   # 50  half
+                                    $'\uf241'   # 60  three-quarters
+                                    $'\uf241'   # 70  three-quarters
+                                    $'\uf240'   # 80  full
+                                    $'\uf240'   # 90  full
+                                    $'\uf240'   # 100 full
+                                    )
+
+                            CHARGING_ICONS=(
+                                    $'\uf244\uf0e7'   # 0
+                                    $'\uf244\uf0e7'   # 10
+                                    $'\uf243\uf0e7'   # 20
+                                    $'\uf243\uf0e7'   # 30
+                                    $'\uf242\uf0e7'   # 40
+                                    $'\uf242\uf0e7'   # 50
+                                    $'\uf241\uf0e7'   # 60
+                                    $'\uf241\uf0e7'   # 70
+                                    $'\uf240\uf0e7'   # 80
+                                    $'\uf240\uf0e7'   # 90
+                                    $'\uf240\uf0e7'   # 100
+                                    )
+
+                            INDEX=$(( CAPACITY / 10 ))
+                            [ "$INDEX" -gt 10 ] && INDEX=10
+
+                            if [ "$STATUS" = "Charging" ]; then
+                                ICON="''${CHARGING_ICONS[$INDEX]}"
+                                    CLASS="charging"
+                                    elif [ "$STATUS" = "Full" ]; then
+                                    ICON="''${DISCHARGING_ICONS[10]}"
+                                    CLASS="full"
+                            else
+                                ICON="''${DISCHARGING_ICONS[$INDEX]}"
+                                    CLASS="discharging"
+                                    [ "$CAPACITY" -le 15 ] && CLASS="critical"
+                                    fi
+
+    case "''${1:-}" in
+                --icon)
+                    printf '%s\n' "$ICON"
+                    ;;
+                --json)
+                    printf '{"text":"%s %s%%","tooltip":"%s — %s%%","class":"%s","percentage":%s}\n' \
+                    "$ICON" "$CAPACITY" "$STATUS" "$CAPACITY" "$CLASS" "$CAPACITY"
+                    ;;
+                *)
+                    printf '%s %s%%\n' "$ICON" "$CAPACITY"
+                    ;;
+                esac
+                    '';
 }

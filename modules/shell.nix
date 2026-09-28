@@ -26,14 +26,18 @@
             ncd="f() { cd $1 && nvim .; }; f";
         };
         shellInit = ''
-            eval "$(starship init zsh)"
+            fpath+=($HOME/.zsh/pure)
+            autoload -U promptinit; promptinit
+            prompt pure
         '';
         interactiveShellInit = ''
-        eval "$(starship init zsh)"
-        eval "$(devenv hook zsh)"
-        source <(fzf --zsh)
-        export FZF_DEFAULT_OPTS="--style minimal --color 16 --layout=reverse --height 30% --preview='bat -p --color=always {}'"
-        export FZF_CTRL_R_OPTS="--style minimal --color 16 --info inline --no-sort --no-preview"
+            fpath+=($HOME/.zsh/pure)
+            autoload -U promptinit; promptinit
+            prompt pure
+            eval "$(devenv hook zsh)"
+            source <(fzf --zsh)
+            export FZF_DEFAULT_OPTS="--style minimal --color 16 --layout=reverse --height 30% --preview='bat -p --color=always {}'"
+            export FZF_CTRL_R_OPTS="--style minimal --color 16 --info inline --no-sort --no-preview"
         '';
         promptInit = ''
         '';
@@ -56,46 +60,5 @@
     programs.zoxide = {
         enable = true;
         enableZshIntegration = true;
-    };
-    programs.starship = {
-        enable = true;
-            settings = {
-                format = ''
-                    $username$hostname$directory$git_branch$git_state$git_status$cmd_duration$line_break$python$character
-                    '';
-                character = {
-                    success_symbol = "[❯](purple)";
-                    error_symbol = "[❯](red)";
-                    vimcmd_symbol = "[❮](green)";
-                };
-                directory.style = "blue";
-                git_branch = {
-                    format = "[$branch]($style)";
-                    style = "bright-black";
-                };
-                git_status = {
-                    format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)";
-                    style = "cyan";
-                    conflicted = "​";
-                    untracked = "​";
-                    modified = "​";
-                    staged = "​";
-                    renamed = "​";
-                    deleted = "​";
-                    stashed = "≡";
-                };
-                git_state = {
-                    format = ''\([$state( $progress_current/$progress_total)]($style)\) '';
-                    style = "bright-black";
-                };
-                cmd_duration = {
-                    format = "[$duration]($style) ";
-                    style = "yellow";
-                };
-                python = {
-                    format = "[$virtualenv]($style) ";
-                    style = "bright-black";
-                };
-            };
     };
 }

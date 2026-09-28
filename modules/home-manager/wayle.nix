@@ -13,8 +13,6 @@
                 layout = [
                 {
                     left = [
-                            "custom-hyprland_scroll_left"
-                            "separator"
                             "clock"
                             "weather"
                             "keyboard-input"
@@ -24,19 +22,21 @@
                             "custom-tomato_timer"
                     ];
                     center = [
-                        "hyprland-workspaces"
+                        "custom-hyprland_scroll_left"
+                            "separator"
+                            "hyprland-workspaces"
+                            "separator"
+                            "custom-hyprland_scroll_right"
                     ];
                     monitor = "*";
                     right = [
                         "systray"
                             "notifications"
-                            "battery"
+                            "custom-battery_capacity"
                             "brightness"
                             "network"
                             "volume"
                             "dashboard"
-                            "separator"
-                            "custom-hyprland_scroll_right"
                     ];
                     show = true;
                 }
@@ -44,6 +44,14 @@
             };
             modules = {
                 custom = [
+                {
+                    id = "battery_capacity";
+                    command = "battery_capacity --json";
+                    format = "{{ output }}";
+                    interval-ms = 5000;
+                    hide-if-empty = true;
+                    icon-show = false;
+                }
                 {
                     id = "tomato_timer";
                     command = "tomato -t | sed 's/[^0-9:]//g'";

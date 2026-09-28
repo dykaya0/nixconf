@@ -12,7 +12,7 @@ in
         theme = "poimandres";
         settings = {
             main = {
-                font = "CaskaydiaMono:size=15";
+                font = "CaskaydiaMono Nerd Font:size=15";
                 dpi-aware = "yes";
                 term = "xterm-256color";
             };
@@ -28,7 +28,12 @@ in
         };
     };
 
-    programs.wireshark.enable = false;
+    programs.wireshark = {
+        enable = true;
+        dumpcap.enable = true;
+        usbmon.enable = true;
+        package = pkgs.wireshark;
+    };
 
     programs.thunar.enable = true;
     services.gvfs.enable = true; # Mount, trash, and other functionalities
@@ -36,14 +41,8 @@ in
 
     services.mullvad-vpn = {
         enable = true;
-        gui.enable = true;
-    };
-
-    services.mealie = {
-        enable = true;
-        settings = {
-            ALLOW_SIGNUP = "true";
-        };
+        package = pkgs.mullvad-vpn;
+        enableEarlyBootBlocking = false;
     };
 
 
@@ -81,6 +80,7 @@ in
             obs-studio
             pavucontrol
             playerctl
+            pure-prompt
             rsync
             shell_scripts.clipboard_history
             shell_scripts.screenshot_menu
@@ -89,6 +89,7 @@ in
             shell_scripts.waybar_refresh
             shell_scripts.xkblayout
             shell_scripts.hyprland_scroll
+            shell_scripts.battery_capacity
             texliveFull
             tealdeer
             (tomato-c.overrideAttrs (old: {
