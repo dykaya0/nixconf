@@ -77,6 +77,7 @@ in
             monero-gui
             mpv
             nsxiv
+            nmap
             obs-studio
             pavucontrol
             playerctl

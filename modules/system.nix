@@ -30,8 +30,15 @@
     nix.gc = {
         automatic = true;
         dates = "weekly";
-        options = "--delete-older-than 30d";
+        options = "--delete-older-than 14d";
     };
+    # Nix store optimisation
+    nix.optimise = {
+      automatic = true;
+      persistent = true;
+      dates = [ "Mon 03:45" ];
+    };
+    nix.settings.auto-optimise-store = true;
 
     fonts.fontconfig = {
         enable = true;

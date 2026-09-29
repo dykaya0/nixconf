@@ -94,6 +94,7 @@
                     app-icons-dedupe = false;
                     app-icons-show = true;
                     divider = " | ";
+                    border-show = true;
                 };
                 idle-inhibit = {
                     startup-duration = 0;
