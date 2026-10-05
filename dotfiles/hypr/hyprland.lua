@@ -1,14 +1,19 @@
-mainMod = "SUPER"
+main_mod = "SUPER"
+noctalia_ipc = "noctalia msg "
 
 browser = "firefox"
 terminal = "footclient"
-appLauncher = "rofi -show drun"
+created_on_empty_terminal = "footclient --app-id=footclient_created_on_empty"
+app_launcher = noctalia_ipc .. "panel-toggle launcher"
+clipboard_panel = noctalia_ipc .. "panel-toggle clipboard"
 fileManager = "thunar"
 emacs = "emacsclient -c -a ''"
 
 require("modules.autostart")
 require("modules.general")
-require("modules.events")
 require("modules.monitors")
-require("modules.windowrules")
+require("modules.rules")
 require("modules.keybinds")
+
+-- For Noctalia Color templates
+require("noctalia").apply_theme()

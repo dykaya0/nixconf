@@ -6,9 +6,8 @@
 
         ../../modules/system.nix
         ../../modules/nvidia.nix
-        ../../modules/sound.nix
-        ../../modules/hyprland.nix
-        ../../modules/shell.nix
+        ../../modules/de.nix
+        ../../modules/terminal.nix
         ../../modules/packages.nix
     ];
 

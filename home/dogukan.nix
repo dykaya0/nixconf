@@ -10,14 +10,12 @@ configs = {
     rofi = "rofi";
     tmux = "tmux";
     waybar = "waybar";
-    kitty = "kitty";
+    noctalia = "noctalia";
 };
 in
 {
     imports = [
         ../modules/home-manager/firefox.nix
-        ../modules/home-manager/wayle.nix
-        ../modules/submodules/wallpaper-changer.nix
     ];
     home.username = "dogukan";
     home.homeDirectory = "/home/dogukan";
@@ -44,58 +42,4 @@ in
             waybar
     ];
 
-# GTK setup
-    gtk = {
-        enable = true;
-
-        theme = {
-            name = "Adwaita-dark";
-            package = pkgs.gnome-themes-extra;
-        };
-
-        iconTheme = {
-            name = "Papirus-Dark";
-            package = pkgs.papirus-icon-theme;
-        };
-
-        cursorTheme = {
-            name = "Adwaita";
-            package = pkgs.adwaita-icon-theme;
-            size = 24;
-        };
-
-        font = {
-            name = "Inter";
-            package = pkgs.inter;
-            size = 11;
-        };
-
-        gtk3.extraConfig = {
-            gtk-application-prefer-dark-theme = true;
-        };
-
-        gtk4.extraConfig = {
-            gtk-application-prefer-dark-theme = true;
-        };
-    };
-# QT setup
-    qt = {
-        enable = true;
-
-        platformTheme.name = "gtk";
-
-        style = {
-            name = "adwaita";
-            package = pkgs.adwaita-qt;
-        };
-    };
-
-# Cursor(system-wide)
-    home.pointerCursor = {
-        gtk.enable = true;
-        x11.enable = true;
-        name = "Adwaita";
-        package = pkgs.adwaita-icon-theme;
-        size = 18;
-    };
 }

@@ -1,9 +1,34 @@
+hl.layer_rule({
+  name = "noctalia",
+  match = {
+    namespace = "^noctalia-(bar-.+|notification|dock|panel|attached-panel|osd|window-switcher)$",
+  },
+  no_anim = true,
+  ignore_alpha = 0.5,
+  blur = true,
+  blur_popups = true,
+})
+-- hl.workspace_rule({ workspace = "1",persistent = true, default_name = "web" })
+-- hl.workspace_rule({ workspace = "2",persistent = true, default_name = "code" })
+-- hl.workspace_rule({ workspace = "3",persistent = true, default_name = "chat" })
+-- hl.workspace_rule({ workspace = "4",persistent = true, default_name = "game" })
+-- hl.workspace_rule({ workspace = "5",persistent = true, default_name = "design" })
+
 hl.window_rule({
     name = "TransparentSpecialWorkspace",
     match = {
         workspace = "special:terminalScratchpad"
     },
     opacity = "0.6 override 0.5 override 0.4 override"
+})
+
+hl.window_rule({
+    name = "Handle on_created_empty behavior",
+    match = {
+        initial_class = "footclient_created_on_empty"
+    },
+    workspace = "special:terminalScratchpad",
+    no_initial_focus = false,
 })
 
 hl.window_rule({

@@ -5,16 +5,12 @@ hl.config({
         border_size = 3,
         gaps_in = 2,
         gaps_out = 3,
-
-        col = {
-            active_border   = "rgba(c4b28aaa)",
-            inactive_border = "rgba(595959aa)",
-        }
     },
 
     scrolling = {
         fullscreen_on_one_column = true,
         focus_fit_method = 1,
+        follow_min_visible = 1,
         wrap_swapcol = false,
     },
 
@@ -88,20 +84,19 @@ hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
 -- Animation
 --- Curves
 
-hl.curve( "overshoot", { type = "bezier", points = { {0.5, 0.9}, {0.1, 1.1} } } )
-hl.curve("overshoot-subtle", { type = "bezier", points = { {0.45, 0.9}, {0.15, 1.04}, }, })
-hl.curve("smooth", { type = "bezier", points = { {0.25, 0.1}, {0.25, 1.0}, }, })
-hl.curve("snap", { type = "bezier", points = { {0.7, 0.0}, {0.2, 1.0}, }, })
+hl.curve("overshoot", { type = "bezier", points = { { 0.5, 0.9 }, { 0.1, 1.1 } } })
+hl.curve("overshoot-subtle", { type = "bezier", points = { { 0.45, 0.9 }, { 0.15, 1.04 }, }, })
+hl.curve("smooth", { type = "bezier", points = { { 0.25, 0.1 }, { 0.25, 1.0 }, }, })
+hl.curve("snap", { type = "bezier", points = { { 0.7, 0.0 }, { 0.2, 1.0 }, }, })
 
 hl.animation({ leaf = "workspaces", enabled = true, speed = 2, bezier = "smooth", style = "fade" })
-hl.animation({ leaf = "windows", enabled = true, speed = 3, bezier = "overshoot-subtle", style = "slide"})
-hl.animation({ leaf = "fade", enabled = true, speed = 3, bezier = "smooth"})
-hl.animation({ leaf = "layers", enabled = true, speed = 3, bezier = "smooth", style = "fade"})
+hl.animation({ leaf = "windows", enabled = true, speed = 3, bezier = "overshoot-subtle", style = "slide" })
+hl.animation({ leaf = "fade", enabled = true, speed = 3, bezier = "smooth" })
+hl.animation({ leaf = "layers", enabled = true, speed = 3, bezier = "smooth", style = "fade" })
 
 
 hl.config({
     misc = {
-        disable_autoreload = true,
         disable_hyprland_logo = true,
         disable_splash_rendering = true,
         force_default_wallpaper = -1,

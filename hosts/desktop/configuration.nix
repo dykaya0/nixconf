@@ -5,10 +5,9 @@
         ./hardware-configuration.nix
 
             ../../modules/system.nix
-            ../../modules/hyprland.nix
+            ../../modules/de.nix
             ../../modules/nvidia.nix
-            ../../modules/sound.nix
-            ../../modules/shell.nix
+            ../../modules/terminal.nix
             ../../modules/packages.nix
     ];
 

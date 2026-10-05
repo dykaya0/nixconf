@@ -11,6 +11,7 @@
               nvidia-vaapi-driver
       ];
   };
+  hardware.cpu.intel.updateMicrocode = true;
 
   services.xserver.videoDrivers = [ "nvidia" ];
 

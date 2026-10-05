@@ -1,6 +1,7 @@
 { lib, pkgs, ... }:
 {
     system.stateVersion = "26.05";
+    nixpkgs.config.allowUnfree = true;
     nix.settings.experimental-features = [
         "nix-command"
         "flakes"
@@ -19,20 +20,33 @@
         };
     };
 
-    # Time and Networking
+    environment.systemPackages = with pkgs; [
+            tuigreet
+            pavucontrol
+            playerctl
+    ];
+
+    # Sound
+    services.pipewire = {
+        enable = true;
+        pulse.enable = true;
+    };
+
+    # Bluetooth
+    hardware.bluetooth.enable = true;
+    hardware.bluetooth.powerOnBoot = false;
+
     time.timeZone = "Europe/Istanbul";
-    nixpkgs.config.allowUnfree = true;
     i18n.defaultLocale = "en_GB.UTF-8";
     networking.networkmanager.enable = true;
     programs.nm-applet.enable = true;
 
-    # Garbage collection
     nix.gc = {
         automatic = true;
         dates = "weekly";
         options = "--delete-older-than 14d";
     };
-    # Nix store optimisation
+
     nix.optimise = {
       automatic = true;
       persistent = true;

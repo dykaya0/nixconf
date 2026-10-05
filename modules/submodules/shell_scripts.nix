@@ -4,7 +4,13 @@
     tms = pkgs.writeShellScriptBin "tms" ''
         set -euo pipefail
 
-        export PATH=${pkgs.fzf}/bin:${pkgs.fd}/bin:${pkgs.tmux}/bin:$PATH
+          export PATH=${
+            pkgs.lib.makeBinPath [
+              pkgs.fzf
+              pkgs.fd
+              pkgs.tmux
+            ]
+          }
 
         DIRS=(
                 "$HOME/projects/personal"
@@ -42,21 +48,54 @@
                                         fi
                                         '';
     clipboard_history = pkgs.writeShellScriptBin "clipboard_history" ''
-        set -euo pipefail
+      set -euo pipefail
 
-        export PATH=${pkgs.cliphist}/bin:${pkgs.rofi}/bin:${pkgs.wl-clipboard}/bin:$PATH
+      export PATH=${
+        pkgs.lib.makeBinPath [
+          pkgs.cliphist
+          pkgs.rofi
+          pkgs.wl-clipboard
+          pkgs.file
+          pkgs.coreutils
+          pkgs.nsxiv
+        ]
+      }
 
-        cliphist list \
-        | rofi -dmenu \
-        -theme-str 'window { location: south; anchor: south; width: 100%; }' \
-        -theme-str 'listview { lines: 6; }' \
-        | cliphist decode \
-        | wl-copy
+      selected="$(
+        cliphist list |
+          rofi -dmenu \
+            -theme-str 'window { location: south; anchor: south; width: 100%; }' \
+            -theme-str 'listview { lines: 6; }'
+      )"
+
+      [ -n "$selected" ] || exit 0
+
+      tmpfile="$(mktemp)"
+      trap 'rm -f "$tmpfile"' EXIT
+
+      # Decode the selected cliphist entry into a file.
+      cliphist decode <<< "$selected" > "$tmpfile"
+
+      mime_type="$(file --mime-type -b "$tmpfile")"
+
+      if [[ "$mime_type" == image/* ]]; then
+        nsxiv "$tmpfile"
+      else
+        wl-copy < "$tmpfile"
+      fi
         '';
     screenshot_menu = pkgs.writeShellScriptBin "screenshot_menu" ''
         set -euo pipefail
 
-        export PATH=${pkgs.hyprshot}/bin:${pkgs.rofi}/bin:${pkgs.wl-clipboard}/bin:$PATH
+          export PATH=${
+            pkgs.lib.makeBinPath [
+            pkgs.coreutils
+            pkgs.util-linux
+            pkgs.hyprshot
+            pkgs.rofi
+            pkgs.wl-clipboard
+            ]
+          }
 
         Region() {
             sleep 0.3
@@ -100,7 +139,18 @@
             '';
 
     switch_audio = pkgs.writeShellScriptBin "switch_audio" ''
-        export PATH="${pkgs.pulseaudio}/bin:${pkgs.gawk}/bin:${pkgs.gnused}/bin:${pkgs.gnugrep}/bin:${pkgs.coreutils}/bin:${pkgs.rofi}/bin:${pkgs.libnotify}/bin"
+
+      export PATH=${
+        pkgs.lib.makeBinPath [
+          pkgs.pulseaudio
+          pkgs.gawk
+          pkgs.gnused
+          pkgs.gnugrep
+          pkgs.coreutils
+          pkgs.rofi
+          pkgs.libnotify
+        ]
+      }
 
         get_sinks() {
             pactl list short sinks | awk '{print $2}' | sed 's/^alsa_output\.//'
@@ -135,13 +185,24 @@
             '';
     waybar_refresh = pkgs.writeShellScriptBin "waybar_refresh" ''
         set -euo pipefail
-        export PATH=${pkgs.procps}/bin:$PATH
+         
+      export PATH=${
+        pkgs.lib.makeBinPath [
+            pkgs.procps
+        ]
+      }
 
         pkill -SIGUSR2 waybar
         '';
 
     xkblayout = pkgs.writeShellScriptBin "xkblayout" ''
-      export PATH="${pkgs.hyprland}/bin:${pkgs.jq}/bin:${pkgs.rofi}/bin:$PATH"
+      export PATH=${
+        pkgs.lib.makeBinPath [
+            pkgs.hyprland
+            pkgs.jq
+            pkgs.rofi
+        ]
+      }
 
       set -euo pipefail
 
@@ -156,8 +217,11 @@
       hyprctl switchxkblayout "$device" "$direction"
     '';
     hyprland_scroll = pkgs.writeShellScriptBin "hyprland_scroll" ''
-      export PATH="${pkgs.hyprland}/bin:$PATH"
-
+      export PATH=${
+        pkgs.lib.makeBinPath [
+            pkgs.hyprland
+        ]
+      }
       set -euo pipefail
 
         if [[ $# -ne 1 ]] && ! command -v "hyprctl" &>/dev/null; then
@@ -169,6 +233,22 @@
         else
            exit 1
         fi
+    '';
+
+    can_suspend = pkgs.writeShellScriptBin "can_suspend" ''
+      export PATH=${
+        pkgs.lib.makeBinPath [
+            pkgs.playerctl
+            pkgs.gnugrep
+        ]
+      }
+      set -euo pipefail
+
+        if playerctl -a status 2>/dev/null | grep -q '^Playing$'; then
+            exit 1
+        fi
+        exit 0
+
     '';
 
     battery_capacity = pkgs.writeShellScriptBin "battery_capacity" ''
