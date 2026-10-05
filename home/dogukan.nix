@@ -7,9 +7,7 @@ configs = {
     ghostty = "ghostty";
     hypr = "hypr";
     nvim = "nvim";
-    rofi = "rofi";
     tmux = "tmux";
-    waybar = "waybar";
     noctalia = "noctalia";
 };
 in
@@ -37,9 +35,7 @@ in
             gnumake
             neovim
             ripgrep
-            rofi
             tmux
-            waybar
     ];
 
 }

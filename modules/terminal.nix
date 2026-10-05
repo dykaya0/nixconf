@@ -42,15 +42,7 @@ in
             nmap
             pure-prompt
             rsync
-            shell_scripts.battery_capacity
-            shell_scripts.can_suspend
-            shell_scripts.clipboard_history
-            shell_scripts.hyprland_scroll
-            shell_scripts.screenshot_menu
-            shell_scripts.switch_audio
             shell_scripts.tms
-            shell_scripts.waybar_refresh
-            shell_scripts.xkblayout
             tealdeer
             texliveFull
             unzip
