@@ -1,5 +1,4 @@
 hl.on("hyprland.start", function()
-    hl.exec_cmd("hyprctl setcursor capitaine-cursors 24")
     hl.exec_cmd("foot --server")
     hl.exec_cmd("noctalia")
     hl.exec_cmd("kclockd")

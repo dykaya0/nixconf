@@ -8,11 +8,6 @@ hl.layer_rule({
   blur = true,
   blur_popups = true,
 })
--- hl.workspace_rule({ workspace = "1",persistent = true, default_name = "web" })
--- hl.workspace_rule({ workspace = "2",persistent = true, default_name = "code" })
--- hl.workspace_rule({ workspace = "3",persistent = true, default_name = "chat" })
--- hl.workspace_rule({ workspace = "4",persistent = true, default_name = "game" })
--- hl.workspace_rule({ workspace = "5",persistent = true, default_name = "design" })
 
 hl.window_rule({
     name = "TransparentSpecialWorkspace",

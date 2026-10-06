@@ -57,8 +57,8 @@ hl.config({
 -- Environment Variables
 
 --- Cursor settings
-hl.env("XCURSOR_SIZE", "18")
-hl.env("HYPRCURSOR_SIZE", "18")
+hl.env("XCURSOR_THEME", "capitaine-cursors")
+hl.env("XCURSOR_SIZE", "24")
 --- Toolkit backend variables
 hl.env("GDK_BACKEND", "wayland,x11,*")   -- GTK: Use Wayland if available; if not, try X11 and then any other GDK backend.
 hl.env("QT_QPA_PLATFORM", "wayland;xcb") -- Qt: Use Wayland if available, fall back to X11 if not.

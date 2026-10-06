@@ -32,7 +32,7 @@ order = [ "default" ]
     concave_edge_corners = true
     contact_shadow = false
     enabled = true
-    end = [ "tray", "spacer_right", "notifications", "bluetooth", "network", "battery", "brightness", "volume", "session" ]
+    end = [ "tray", "spacer_right", "notifications", "bluetooth", "network", "brightness", "battery", "volume", "session" ]
     font_scale = 1.0
     font_weight = 500
     hover_highlight = true
@@ -53,7 +53,7 @@ order = [ "default" ]
     shadow = true
     show_on_workspace_switch = true
     smart_auto_hide = false
-    start = [ "clock", "spacer_left", "wallpaper", "screenshot" ]
+    start = [ "clock", "spacer_left", "screenshot", "caffeine", "bar" ]
     thickness = 30
     widget_spacing = 8
 
@@ -210,8 +210,8 @@ cancel = [ "Escape" ]
 copy = [ "Ctrl+c" ]
 delete = [ "Delete" ]
 down = [ "Down", "Ctrl+n" ]
-left = [ "Left" ]
-right = [ "Right" ]
+left = [ "Left", "Ctrl+h" ]
+right = [ "Right", "Ctrl+l" ]
 save = [ "Ctrl+s" ]
 tab_next = [ "Tab" ]
 tab_previous = [ "Shift+ISO_Left_Tab" ]
@@ -367,11 +367,12 @@ scale = 1.0
     volume_output = true
     wifi = true
 
-[plugin_settings]
+[plugin_settings."noctalia/timer"]
+panel_placement = "floating"
 
 [plugins]
 auto_update = "none"
-enabled = []
+enabled = [ "noctalia/timer" ]
 
     [[plugins.source]]
     enabled = true
@@ -394,7 +395,7 @@ clipboard_auto_paste = "auto"
 clipboard_confirm_clear_history = true
 clipboard_enabled = true
 clipboard_history_max_entries = 9999
-clipboard_image_action_command = "nsxiv {path}hyprland_scroll left"
+clipboard_image_action_command = "nsxiv {path}"
 clipboard_keep_from_closed_apps = true
 corner_radius_scale = 0.5
 date_format = "%A, %x"
@@ -504,7 +505,7 @@ time_format = "{:%H:%M}"
         [[shell.session.actions]]
         action = "lock"
         command = ""
-        countdown_seconds = 0.0
+        countdown_seconds = 1.0
         enabled = true
         glyph = ""
         label = ""
@@ -524,7 +525,7 @@ time_format = "{:%H:%M}"
         [[shell.session.actions]]
         action = "lock_and_suspend"
         command = ""
-        countdown_seconds = 0.0
+        countdown_seconds = 3.0
         enabled = true
         glyph = ""
         label = ""
@@ -534,7 +535,7 @@ time_format = "{:%H:%M}"
         [[shell.session.actions]]
         action = "reboot"
         command = ""
-        countdown_seconds = 0.0
+        countdown_seconds = 3.0
         enabled = true
         glyph = ""
         label = ""
@@ -544,7 +545,7 @@ time_format = "{:%H:%M}"
         [[shell.session.actions]]
         action = "shutdown"
         command = ""
-        countdown_seconds = 0.0
+        countdown_seconds = 3.0
         enabled = true
         glyph = ""
         label = ""
@@ -647,6 +648,10 @@ min_length = 80.0
 title_scroll = "none"
 type = "active_window"
 
+[widget.bar]
+show_idle_on_horizontal = false
+type = "noctalia/timer:bar"
+
 [widget.clock]
 type = "clock"
 
@@ -732,6 +737,9 @@ type = "sysmon"
 [widget.volume]
 scroll_repeat = "steps"
 type = "volume"
+
+    [widget.volume.actions]
+    middle = "exec pavucontrol"
 
 [widget.workspaces]
 active_pill_size = 2.0
