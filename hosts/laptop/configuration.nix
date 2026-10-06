@@ -26,12 +26,12 @@
             "networkmanager"
         ];
     };
-    # TLP for battery management
-    services.tlp.enable = true;
+    # Battery
+    services.upower.enable = true;
+    services.power-profiles-daemon.enable = true;
 
     # Laptop specific packages
     environment.systemPackages = with pkgs; [
-        upower
         brightnessctl
     ];
 }
