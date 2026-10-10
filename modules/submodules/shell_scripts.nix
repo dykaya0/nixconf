@@ -9,8 +9,10 @@
                 pkgs.fzf
                     pkgs.fd
                     pkgs.tmux
+                    pkgs.gnused
+                    pkgs.coreutils
             ]
-        }
+        }:$PATH
 
     DIRS=(
             "$HOME/projects/personal"

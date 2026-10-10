@@ -87,6 +87,7 @@
                     ublock-origin
                     sponsorblock
                     darkreader
+                    foxyproxy-standard
             ];
 
         };

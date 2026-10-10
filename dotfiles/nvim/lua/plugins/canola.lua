@@ -1,5 +1,5 @@
 return {
-    'barrettruth/canola.nvim',
+    'https://forge.barrettruth.com/barrettruth/canola.nvim',
     opts = {},
     lazy = false,
     dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons

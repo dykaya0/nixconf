@@ -28,6 +28,7 @@
             mpv
             nsxiv
             obs-studio
+            openvpn
             (tomato-c.overrideAttrs (old: {
               patches = (old.patches or []) ++ [
                 ./patches/tomato-config.patch
